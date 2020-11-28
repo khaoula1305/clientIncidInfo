@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { UserService } from './service/user.service';
 import { UsersComponent } from './users/users.component';
 import { MessagesComponent } from './messages/messages.component';
+import { SideBarComponent } from './side-bar/side-bar.component';
+import { TopBarComponent } from './top-bar/top-bar.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { MessagesComponent } from './messages/messages.component';
     UserListComponent,
     UserFormComponent,
     UsersComponent,
-    MessagesComponent
+    MessagesComponent,
+    SideBarComponent,
+    TopBarComponent
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import {UsersComponent} from './users/users.component';
 import {MessagesComponent} from './messages/messages.component';
+import {AppComponent} from './app.component';
 
 
 const routes: Routes = [
