@@ -5,13 +5,15 @@ import { UserFormComponent } from './user-form/user-form.component';
 import {UsersComponent} from './users/users.component';
 import {MessagesComponent} from './messages/messages.component';
 import {AppComponent} from './app.component';
+import {IncidentFormComponent} from './incident-form/incident-form.component';
 
 
 const routes: Routes = [
     { path: 'users', component: UserListComponent },
   { path: 'adduser', component: UserFormComponent },
     {path: 'test', component: UsersComponent},
-  {path: 'messages', component: MessagesComponent}
+  {path: 'messages', component: MessagesComponent},
+  {path: 'AjoutIncident', component: IncidentFormComponent}
 ];
 
 @NgModule({

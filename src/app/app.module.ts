@@ -12,6 +12,7 @@ import { UsersComponent } from './users/users.component';
 import { MessagesComponent } from './messages/messages.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
+import { IncidentFormComponent } from './incident-form/incident-form.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { TopBarComponent } from './top-bar/top-bar.component';
     UsersComponent,
     MessagesComponent,
     SideBarComponent,
-    TopBarComponent
+    TopBarComponent,
+    IncidentFormComponent
   ],
   imports: [
     BrowserModule,
