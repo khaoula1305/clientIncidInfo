@@ -1,0 +1,29 @@
+<h1>Listes des incidents</h1>
+
+<div class="card my-5">
+    <div class="card-body">
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Titre</th>
+            <th scope="col">Description</th>
+            <th scope="col">Date</th>
+            <th scope="col">Resolue</th>
+
+          </tr>
+        </thead>
+        <tbody *ngIf="incidents">
+          <tr *ngFor="let incident of incidents._embedded.incidents">
+            <!-- <tr *ngFor="let incident of incidents"> -->
+            <td>{{ incident.id }}</td>
+            <td>{{ incident.nom }}</td>
+            <td>{{ incident.desc }}</td>
+            <td>{{ incident.date }}</td>
+            <td>{{ incident.resolue }}</td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
