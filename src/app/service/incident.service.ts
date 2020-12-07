@@ -8,8 +8,9 @@ import {HttpClient} from '@angular/common/http';
 })
 export class IncidentService {
   private IncidentsUrl: string;
+
   constructor(private http: HttpClient) {
-    this.IncidentsUrl = 'http://localhost:8080/Incidents';
+    this.IncidentsUrl = 'http://localhost:9090/incidents';
   }
 
   public findAll(): Observable<Incident[]> {

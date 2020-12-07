@@ -3,7 +3,7 @@
     <form (ngSubmit)="onSubmit()" #incidentForm="ngForm">
       <div class="form-group">
         <label for="name">Titre de l'incident</label>
-        <input type="text" [(ngModel)]="incident.name"
+        <input type="text" [(ngModel)]="incident.nom"
                class="form-control"
                id="name"
                name="name"
@@ -13,7 +13,7 @@
       <div [hidden]="!name.pristine" class="alert alert-danger">Name is required</div>
       <div class="form-group">
         <label for="description">Description</label>
-        <textarea  [(ngModel)]="incident.description"
+        <textarea  [(ngModel)]="incident.desc"
                   cols="20"
                   rows="6"
                class="form-control"

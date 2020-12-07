@@ -1,5 +1,7 @@
 export class Incident {
-  id: string;
-  name: string;
-  description: string;
+  id: bigint;
+  nom: string;
+  desc: string;
+  date: string;
+
 }
