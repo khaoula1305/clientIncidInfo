@@ -10,15 +10,15 @@ export class IncidentListeComponent implements OnInit {
 
   public incidents;
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.http.get("http://localhost:9090/incidents")
-      .subscribe(data=>{
-        this.incidents=data;
-      },err=>{
+    this.http.get('http://localhost:9090/incidents')
+      .subscribe(data => {
+        this.incidents = data;
+      }, err => {
         console.log(err);
-      })
+      });
   }
-  
+
 }
