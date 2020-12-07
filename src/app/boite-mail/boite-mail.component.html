@@ -1,0 +1,29 @@
+<h1>Ma boite-mail</h1>
+
+<div class="card my-5">
+    <div class="card-body">
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Titre</th>
+            <th scope="col">Description</th>
+            <th scope="col">Read</th>
+            <th scope="col">DATE</th>
+
+          </tr>
+        </thead>
+        <tbody *ngIf="messages">
+          <tr *ngFor="let message of messages._embedded.messages">
+            <!-- <tr *ngFor="let message of messages"> -->
+            <td>{{ message.id }}</td>
+            <td>{{ message.titre }}</td>
+            <td>{{ message.description }}</td>
+            <td>{{ message.read }}</td>
+            <td>{{ message.date }}</td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
