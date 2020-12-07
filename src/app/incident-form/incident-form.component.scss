@@ -1,0 +1,30 @@
+*{
+  font-family:calibri;
+  font-size:19px;
+}
+h2 {
+  font-size:1.6em;
+  color:#666;
+}
+label{ /* Pour alignement des zones de saisie */
+  width:150px;
+  display:inline-block;
+  margin-bottom:20px;
+}
+form { /* Cadre du formulaire */
+  border:2px solid gray;
+  border-radius:10px;
+  box-sizing:border-box;
+  padding:15px;
+  width:600px;
+  margin:auto;
+}
+input {
+  border:2px solid gray;
+  border-radius:5px;
+}
+#submit{ /* Bouton Envoyer */
+  display:block;
+  width:130px;
+  height:40px;
+}
