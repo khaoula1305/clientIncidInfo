@@ -15,6 +15,7 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import { IncidentFormComponent } from './incident-form/incident-form.component';
 import { BoiteMailComponent } from './boite-mail/boite-mail.component';
 import { IncidentListeComponent } from './incident-liste/incident-liste.component';
+import {IncidentService} from './service/incident.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { IncidentListeComponent } from './incident-liste/incident-liste.componen
     HttpClientModule,
     FormsModule
   ],
-  providers: [UserService],
+  providers: [UserService, IncidentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -28,14 +28,14 @@
 <!-- Page Wrapper -->
 <div id="wrapper">
   <!--Sidebar-->
-  <app-side-bar></app-side-bar>
+  <app-side-bar *ngIf="isAuth"></app-side-bar>
 
   <!-- Content Wrapper -->
   <div id="content-wrapper" class="d-flex flex-column">
     <!-- Main Content -->
     <div id="content">
       <!-- Topbar -->
-      <app-top-bar></app-top-bar>
+      <app-top-bar *ngIf="isAuth"></app-top-bar>
 
       <!-- Begin Page Content -->
       <div class="container-fluid">
@@ -60,7 +60,8 @@
               </div-->
               <div class="card-body">
                 <div class="text-center">
-                  <h1>Here show all messages between user and Helpdesk</h1>
+                  <h1>Gestion des incidents informatiques</h1>
+                  <button (click)="auth()" [disabled]="isAuth">Authentifier</button>
                   <!-- <app-boite-mail></app-boite-mail> -->
                   <router-outlet></router-outlet>
                 </div>

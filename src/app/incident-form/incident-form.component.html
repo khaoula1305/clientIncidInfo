@@ -2,11 +2,11 @@
   <div class="card-body">
     <form (ngSubmit)="onSubmit()" #incidentForm="ngForm">
       <div class="form-group">
-        <label for="name">Titre de l'incident</label>
-        <input type="text" [(ngModel)]="incident.nom"
+        <label for="titre">Titre de l'incident</label>
+        <input type="text" [(ngModel)]="incident.titre"
                class="form-control"
-               id="name"
-               name="name"
+               id="titre"
+               name="titre"
                placeholder="Entrer le titre de l'incident "
                required #name="ngModel">
       </div>

@@ -3,16 +3,16 @@
     <table class="table table-bordered table-striped">
       <thead class="thead-dark">
         <tr>
-          <th scope="col">#</th>
           <th scope="col">Name</th>
           <th scope="col">Email</th>
+          <th scope="col"> Fonction</th>
         </tr>
       </thead>
-      <tbody>
-        <tr *ngFor="let user of users">
-          <td>{{ user.id }}</td>
-          <td>{{ user.name }}</td>
-          <td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>
+      <tbody *ngIf="users">
+        <tr *ngFor="let user of users._embedded.users">
+          <td>{{ user.nom }}</td>
+          <td><a>{{ user.email }}</a></td>
+          <td>{{user.fonction}}</td>
         </tr>
       </tbody>
     </table>

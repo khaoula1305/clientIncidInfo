@@ -1,6 +1,9 @@
 export class User {
-    id: string;
-    name: string;
-    email: string;
-    phone: string;
+  id: bigint;
+    nom: string ;
+    email: string ;
+    password: string ;
+    typeCompte: string ; // Administrateur, Helpdesk, Manager, Technicien , Collaborateur.
+    division: string;  // Dans quel division travail
+    fonction: string;  // la position du technicien
 }

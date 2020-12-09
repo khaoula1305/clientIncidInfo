@@ -14,7 +14,10 @@ export class IncidentFormComponent  {
   this.incident = new Incident();
   }
   onSubmit() {
-  this.incidentService.save(this.incident);
+  this.incidentService.save(this.incident).subscribe(result => this.gotoIncidentList());
 }
 
+  private gotoIncidentList() {
+    this.router.navigate(['incident-liste']);
+  }
 }

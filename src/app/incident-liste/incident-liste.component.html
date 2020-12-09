@@ -5,7 +5,6 @@
       <table class="table table-bordered table-striped">
         <thead class="thead-dark">
           <tr>
-            <th scope="col">id</th>
             <th scope="col">Titre</th>
             <th scope="col">Description</th>
             <th scope="col">Date</th>
@@ -14,10 +13,9 @@
           </tr>
         </thead>
         <tbody *ngIf="incidents">
-           <tr *ngFor="let incident of incidents">
-            <td>{{ incident.id }}</td>
-            <td>{{ incident.nom }}</td>
-            <td>{{ incident.desc }}</td>
+           <tr *ngFor="let incident of incidents._embedded.incidents">
+            <td>{{ incident.titre }}</td>
+            <td>{{ incident.description }}</td>
             <td>{{ incident.date }}</td>
             <td>{{ incident.resolue }}</td>
 

@@ -1,7 +1,7 @@
 export class Incident {
   id: bigint;
-  nom: string;
-  desc: string;
+  titre: string;
+  description: string;
   date: string;
 
 }

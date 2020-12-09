@@ -4,7 +4,6 @@ import { UserListComponent } from './user-list/user-list.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import {UsersComponent} from './users/users.component';
 import {MessagesComponent} from './messages/messages.component';
-import {AppComponent} from './app.component';
 import {IncidentFormComponent} from './incident-form/incident-form.component';
 import { BoiteMailComponent } from './boite-mail/boite-mail.component';
 import { IncidentListeComponent } from './incident-liste/incident-liste.component';
