@@ -1,4 +1,4 @@
-<h1>Ma boite-mail</h1>
+<!-- <h1>Ma boite-mail</h1>
 
 <div class="card my-5">
     <div class="card-body">
@@ -15,7 +15,6 @@
         </thead>
         <tbody *ngIf="messages">
           <tr *ngFor="let message of messages._embedded.messages">
-            <!-- <tr *ngFor="let message of messages"> -->
             <td>{{ message.id }}</td>
             <td>{{ message.titre }}</td>
             <td>{{ message.description }}</td>
@@ -26,4 +25,43 @@
         </tbody>
       </table>
     </div>
-  </div>
+  </div> -->
+
+  <table id="example" class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Traité</th>
+        <th scope="col">Envoyé par</th>
+        <th scope="col">Titre</th>
+        <th scope="col">Description</th>
+        <th scope="col">Date</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="messages" >
+      <tr *ngFor="let message of messages._embedded.messages"  >
+        <th  scope="row" >{{ message.id }}</th>
+        <td > <span class="traite">{{ message.traite }}</span></td>
+        <td> <span  class="sender">{{ message.sender }}</span></td>
+        <td> <span  class="titre">{{ message.titre }}</span></td>
+        <td> <span  class=" text-muted description">{{ message.description }}</span></td>
+        <td> <span class="date">{{ message.date }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script  src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.js'></script>
+  <script>
+  $(document).ready(function() {
+
+    $('#example tr').click(function() {
+      //window.location.href="/display-mail" ;
+      window.location.href = "https://www.tutorialrepublic.com/";
+    });
+
+  });
+  </script>
+
+  <!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->

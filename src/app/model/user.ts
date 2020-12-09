@@ -1,6 +1,9 @@
 export class User {
-    id: string;
-    name: string;
+    id: bigint;
+    nom: string;
     email: string;
-    phone: string;
+    password: string;
+    typeCompte: string; 
+    division: string;  
+    fonction: string; 
 }

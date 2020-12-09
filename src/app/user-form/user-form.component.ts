@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+//import { FormBuilder } from "@angular/forms";
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../service/user.service';
 import { User } from '../model/user';
@@ -14,9 +15,12 @@ export class UserFormComponent {
  
   constructor(
     private route: ActivatedRoute, 
-      private router: Router, 
-        private userService: UserService) {
+    private router: Router, 
+   private userService: UserService
+   //public fb: FormBuilder 
+  ){
     this.user = new User();
+
   }
  
   onSubmit() {
@@ -25,5 +29,13 @@ export class UserFormComponent {
  
   gotoUserList() {
     this.router.navigate(['/users']);
+  }
+
+  //Type de compte:
+  typeComptes: any = ['Administrateur' , 'Collaborateur' , 'Helpdesk', 'Manager' , 'Technicien']
+  //typeCompteForm = this.fb.group({typeDeCompte: ['']})
+  onClickTypeCompte(){
+    this.user.typeCompte=this.typeComptes.value
+    //alert(JSON.stringify(this.typeComptes.value))
   }
 }

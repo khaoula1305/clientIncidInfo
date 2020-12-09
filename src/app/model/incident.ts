@@ -1,7 +1,11 @@
 export class Incident {
   id: bigint;
-  nom: string;
-  desc: string;
+  collaborateur: string;
+  titre: string;
   date: string;
+  description: string;
+  division: string;
+  affectedto: string;
+  resolue: boolean;
 
 }

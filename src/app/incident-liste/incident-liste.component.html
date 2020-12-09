@@ -14,10 +14,10 @@
           </tr>
         </thead>
         <tbody *ngIf="incidents">
-           <tr *ngFor="let incident of incidents">
+           <tr *ngFor="let incident of incidents._embedded.incidents">
             <td>{{ incident.id }}</td>
-            <td>{{ incident.nom }}</td>
-            <td>{{ incident.desc }}</td>
+            <td>{{ incident.titre }}</td>
+            <td>{{ incident.description }}</td>
             <td>{{ incident.date }}</td>
             <td>{{ incident.resolue }}</td>
 

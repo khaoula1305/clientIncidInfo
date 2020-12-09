@@ -4,15 +4,27 @@
       <thead class="thead-dark">
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Name</th>
+          <th scope="col">Nom</th>
           <th scope="col">Email</th>
+          <th scope="col">Password</th>
+          <th scope="col">Type de compte</th>
+          <th scope="col">Division</th>
+          <th scope="col">Fonction</th>
+          <th scope="col">Modifier</th>
+          <th scope="col">Supprimer</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of users">
+        <tr *ngFor="let user of users._embedded.users">
           <td>{{ user.id }}</td>
-          <td>{{ user.name }}</td>
+          <td>{{ user.nom }}</td>
           <td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>
+          <td>{{ user.password }}</td>
+          <td>{{ user.typeCompte }}</td>
+          <td>{{ user.division }}</td>
+          <td>{{ user.fonction }}</td>
+          <td> <a routerLink="/messages" class="btn btn-danger">Modifier</a></td>
+          <td><a routerLink="/messages" class="btn btn-danger">Supprimer</a> </td>
         </tr>
       </tbody>
     </table>
