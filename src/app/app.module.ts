@@ -16,6 +16,7 @@ import { IncidentFormComponent } from './incident-form/incident-form.component';
 import { BoiteMailComponent } from './boite-mail/boite-mail.component';
 import { IncidentListeComponent } from './incident-liste/incident-liste.component';
 import {IncidentService} from './service/incident.service';
+import {TechnicianModule} from './technician/technician.module';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {IncidentService} from './service/incident.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    TechnicianModule
   ],
   providers: [UserService, IncidentService],
   bootstrap: [AppComponent]
