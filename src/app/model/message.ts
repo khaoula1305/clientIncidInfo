@@ -1,5 +1,5 @@
 export class Message {
-    id: bigint;
+    id: number;
     sender: string;
     reciever: string;
     titre: string;

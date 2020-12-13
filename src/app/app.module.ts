@@ -15,9 +15,10 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import { IncidentFormComponent } from './incident-form/incident-form.component';
 import { BoiteMailComponent } from './boite-mail/boite-mail.component';
 import { IncidentListeComponent } from './incident-liste/incident-liste.component';
-import { GmailInboxComponent } from './PageCollaborateur/gmail-inbox/gmail-inbox.component';
+//import { GmailInboxComponent } from './Z---Corbeille/gmail-inbox/gmail-inbox.component';
 import { ComposeMailComponent } from './compose-mail/compose-mail.component';
 import { DisplayMailComponent } from './display-mail/display-mail.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -31,9 +32,10 @@ import { DisplayMailComponent } from './display-mail/display-mail.component';
     IncidentFormComponent,
     BoiteMailComponent,
     IncidentListeComponent,
-    GmailInboxComponent,
+//    GmailInboxComponent,
     ComposeMailComponent,
-    DisplayMailComponent
+    DisplayMailComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
