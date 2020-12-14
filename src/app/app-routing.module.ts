@@ -7,6 +7,7 @@ import {MessagesComponent} from './messages/messages.component';
 import {IncidentFormComponent} from './incident-form/incident-form.component';
 import { BoiteMailComponent } from './boite-mail/boite-mail.component';
 import { IncidentListeComponent } from './incident-liste/incident-liste.component';
+import {IncidentsComponent} from './knowledge-base/incidents/incidents.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'AjoutIncident', component: IncidentFormComponent},
   {path: 'boite-mail', component: BoiteMailComponent},
   {path: 'incident-liste', component: IncidentListeComponent},
+  {path: 'incidents', component: IncidentsComponent}
 ];
 
 @NgModule({

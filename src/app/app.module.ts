@@ -16,6 +16,9 @@ import { IncidentFormComponent } from './incident-form/incident-form.component';
 import { BoiteMailComponent } from './boite-mail/boite-mail.component';
 import { IncidentListeComponent } from './incident-liste/incident-liste.component';
 import {IncidentService} from './service/incident.service';
+import {KnowledgeBaseModule} from './knowledge-base/knowledge-base.module';
+import { LoginComponent } from './login/login.component';
+
 
 @NgModule({
   declarations: [
@@ -28,13 +31,15 @@ import {IncidentService} from './service/incident.service';
     TopBarComponent,
     IncidentFormComponent,
     BoiteMailComponent,
-    IncidentListeComponent
+    IncidentListeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    KnowledgeBaseModule
   ],
   providers: [UserService, IncidentService],
   bootstrap: [AppComponent]
