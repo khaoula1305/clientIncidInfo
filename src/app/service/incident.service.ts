@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Incident} from '../model/incident';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
+import {map} from 'rxjs/operators'
 
 @Injectable({providedIn: 'root'}) 
 export class IncidentService {
@@ -11,8 +12,11 @@ export class IncidentService {
     this.IncidentsUrl = 'http://localhost:9090/incidents';
   }
 
-  public findAll(): Observable<Incident[]> {
-    return this.http.get<Incident[]>(this.IncidentsUrl);
+  findAllIncidents(): Observable<Array<Incident>> {
+    return this.http.get(this.IncidentsUrl).pipe(
+    map((data: any) => {
+      return data._embedded.incidents as Incident[];
+    }))
   }
 
   public save(incident: Incident) {

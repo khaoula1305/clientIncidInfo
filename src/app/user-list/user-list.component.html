@@ -15,7 +15,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of users._embedded.users">
+        <tr *ngFor="let user of users">
           <td>{{ user.id }}</td>
           <td>{{ user.nom }}</td>
           <td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>

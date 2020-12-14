@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../model/user';
 import { Observable } from 'rxjs';
+import {map} from 'rxjs/operators'
 
 @Injectable()
 export class UserService {
@@ -11,8 +12,12 @@ export class UserService {
     this.usersUrl = 'http://localhost:9090/users';
   }
 
-  public findAll(): Observable<User[]> {
-    return this.http.get<User[]>(this.usersUrl);
+
+  findAllUsers(): Observable<Array<User>> {
+    return this.http.get(this.usersUrl).pipe(
+    map((data: any) => {
+      return data._embedded.users as User[];
+    }))
   }
 
   public save(user: User) {

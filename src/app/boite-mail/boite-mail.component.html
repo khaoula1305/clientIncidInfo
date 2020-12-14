@@ -11,7 +11,7 @@
       </tr>
     </thead>
     <tbody *ngIf="messages" >
-      <tr *ngFor="let message of messages._embedded.messages " (click)="goToMail($event,message.id)" >
+      <tr *ngFor="let message of messages " (click)="goToMail($event,message)" >
         <th  scope="row" >{{ message.id }}</th>
         <td > <span class="traite">{{ message.traite }}</span></td>
         <td> <span  class="sender">{{ message.sender }}</span></td>
