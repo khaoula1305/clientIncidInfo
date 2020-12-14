@@ -17,7 +17,8 @@ export class DisplayMailComponent implements OnInit {
 
   ngOnInit() {
     //Get Id of clicked mail to display
-  this.data2.currentMail.subscribe(mail => this.nbrMailClicked = mail)
+    // tslint:disable-next-line:no-unused-expression
+  this.data2.currentMail.subscribe(mail => this.nbrMailClicked = mail);
 
   }
   /*  si data est de type Message
@@ -32,5 +33,5 @@ export class DisplayMailComponent implements OnInit {
 
   }
   */
-  
+
 }
