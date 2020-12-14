@@ -1,16 +1,18 @@
 <div class="card my-5">
   <div class="card-body">
     <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+      <!-- Nom Utilisateur -->
       <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" [(ngModel)]="user.nom"
-          class="form-control"
-          id="name"
-          name="name"
-          placeholder="Enter your name"
-          required #name="ngModel">
+        <label for="nom">nom</label>
+        <input type="text" [(ngModel)]="user.nom" 
+          class="form-control" 
+          id="nom" 
+          name="nom" 
+          placeholder="Enter your nom"
+          required #nom="ngModel">
       </div>
-      <div [hidden]="!name.pristine" class="alert alert-danger">Name is required</div>
+      <div [hidden]="!nom.pristine" class="alert alert-danger">nom is required</div>
+      <!-- Email Utilisateur -->
       <div class="form-group">
         <label for="email">Email</label>
         <input type="text" [(ngModel)]="user.email"
@@ -21,8 +23,76 @@
           required #email="ngModel">
         <div [hidden]="!email.pristine" class="alert alert-danger">Email is required</div>
       </div>
-      <button type="submit"
-      [disabled]="!userForm.form.valid"
+      <!-- Password Utilisateur -->
+      <div class="form-group">
+        <label for="password">password</label>
+        <input type="text" [(ngModel)]="user.password" 
+          class="form-control" 
+          id="password" 
+          name="password" 
+          placeholder="Enter your password"
+          required #password="ngModel">
+          <div [hidden]="!email.pristine" class="alert alert-danger">Email is required</div>
+        </div>
+      <!-- Type Compte -->
+      <div class="form-group">
+        <label for="typeCompte">Type de Compte</label>
+        <input type="text" [(ngModel)]="user.typeCompte" 
+          class="form-control" 
+          id="typeCompte" 
+          name="typeCompte" 
+          placeholder="Enter your typeCompte"
+          required #typeCompte="ngModel">
+          <div [hidden]="!email.pristine" class="alert alert-danger">Email is required</div>
+        </div>
+
+          <!-- <form #userForm="typeCompteForm" (ngClick)="onClickTypeCompte()">
+
+            <select formControlName="typeDeCompte">
+              <option disabled>Type de Compte</option>
+              <option>Administrateur</option>
+              <option>Collaborateur</option>
+              <option *ngFor="let compte of typeComptes">{{compte}}</option>
+            </select>
+          </form> -->
+
+          <div class="dropdown nav-tabs">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Type de compte
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <div *ngFor="let compte of typeComptes">
+                <li ><button class="dropdown-item" type="button" >{{ compte }}</button></li>
+              </div>
+            </div>
+          </div>
+
+          
+      <!-- Division -->
+      <div class="form-group">
+        <label for="division">Division</label>
+        <input type="text" [(ngModel)]="user.division" 
+          class="form-control" 
+          id="division" 
+          name="division" 
+          placeholder="Enter your division"
+          required #division="ngModel">
+          <div [hidden]="!email.pristine" class="alert alert-danger">Email is required</div>
+        </div>
+      <!-- Fonction -->
+      <div class="form-group">
+        <label for="fonction">Fonction</label>
+        <input type="text" [(ngModel)]="user.fonction" 
+          class="form-control" 
+          id="fonction" 
+          name="fonction" 
+          placeholder="Enter your fonction"
+          required #fonction="ngModel">
+          <div [hidden]="!email.pristine" class="alert alert-danger">Email is required</div>
+        </div>
+      <!-- Boutton pour ajouter un utilisateur -->
+      <button type="submit" 
+      [disabled]="!userForm.form.valid" 
         class="btn btn-info">Submit</button>
     </form>
   </div>

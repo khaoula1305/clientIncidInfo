@@ -1,0 +1,32 @@
+<div class="card my-5">
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit()" #composeMail="ngForm">
+        <div class="form-group">
+          <label for="titre">Titre de message</label>
+          <input type="text" [(ngModel)]="message.titre"
+                 class="form-control"
+                 id="titre"
+                 name="titre"
+                 placeholder="Entrer le titre de message "
+                 required #titre="ngModel">
+        </div>
+        <div [hidden]="!titre.pristine" class="alert alert-danger">titre is required</div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea  [(ngModel)]="message.description"
+                    cols="20"
+                    rows="6"
+                 class="form-control"
+                 id="description"
+                 name="description"
+                 placeholder="Votre description"
+                 required #description="ngModel"></textarea>
+          <div [hidden]="!description.pristine" class="alert alert-danger">description is required</div>
+        </div>
+        <button type="submit" [disabled]="!composeMail.form.valid"
+                class="btn btn-info">Envoyer à l'équipe Helpdesk</button>
+      </form>
+    </div>
+  </div>
+  
+  

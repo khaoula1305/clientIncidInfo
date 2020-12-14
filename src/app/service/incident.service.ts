@@ -3,7 +3,7 @@ import {Incident} from '../model/incident';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 
-@Injectable()
+@Injectable({providedIn: 'root'}) 
 export class IncidentService {
   private IncidentsUrl: string;
 

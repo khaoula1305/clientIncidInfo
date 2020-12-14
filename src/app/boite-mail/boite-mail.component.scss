@@ -1,0 +1,67 @@
+a:hover{
+    text-decoration: none;
+}
+tr{
+    cursor: pointer;
+}
+td{
+    margin-left: 0%;
+    text-align: left;
+    color: black;
+    text-decoration: none;
+}
+td{
+    text-align: left;
+}
+.traite{
+    color: black;
+    background-color: rgb(247, 100, 100);
+    border: none;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    border-radius: 12px;
+}
+.sender{
+    font-weight: bold;
+    display: block;
+    word-wrap:break-word;
+    width: 100px;
+    white-space: normal
+}
+.titre{
+    font-size: large;
+    font-weight: bolder;
+    display: block;
+    word-wrap:break-word;
+    width: 250px;
+    overflow: hidden;
+    white-space: normal
+}
+.description{
+    display: block;
+    //word-wrap:break-word;
+    //width: 250px;
+    height: 20px;
+    overflow: hidden;
+    white-space: normal
+}
+.date{
+    text-align: right;
+    color: black;
+    background-color: rgb(160, 156, 156);
+    border: none;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    border-radius: 12px;
+    word-wrap:break-word;
+    width: 130px;
+    white-space: normal
+}
