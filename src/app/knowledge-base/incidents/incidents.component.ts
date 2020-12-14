@@ -10,8 +10,9 @@ export class IncidentsComponent implements OnInit {
 
   public incidents;
 
-  constructor(private http: HttpClient) { }
 
+  constructor(private http: HttpClient) {
+  }
   ngOnInit() {
     this.http.get('http://localhost:9090/incidents')
       .subscribe(data => {
@@ -21,4 +22,11 @@ export class IncidentsComponent implements OnInit {
       });
   }
 
+
+  isResolu(resolu: any) {
+    if (resolu === true) {
+      return 'text-primary';
+    } else { return 'text-danger'; }
+
+  }
 }
