@@ -15,10 +15,10 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import { IncidentFormComponent } from './incident-form/incident-form.component';
 import { BoiteMailComponent } from './boite-mail/boite-mail.component';
 import { IncidentListeComponent } from './incident-liste/incident-liste.component';
-//import { GmailInboxComponent } from './Z---Corbeille/gmail-inbox/gmail-inbox.component';
 import { ComposeMailComponent } from './compose-mail/compose-mail.component';
 import { DisplayMailComponent } from './display-mail/display-mail.component';
 import { LoginComponent } from './login/login.component';
+import {IncidentService} from './service/incident.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +42,6 @@ import { LoginComponent } from './login/login.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    TechnicianModule
   ],
   providers: [UserService, IncidentService],
   bootstrap: [AppComponent]
