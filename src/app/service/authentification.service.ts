@@ -45,6 +45,7 @@ export class AuthentificationService {
     this.authenticatedUser=user;
     this.currentUser=user;
       localStorage.setItem("authenticatedUser",JSON.stringify(this.authenticatedUser));
+      console.log("Connected successfully");
       return true;
     }
     else{

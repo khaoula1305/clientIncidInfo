@@ -11,5 +11,6 @@ export class GmailInboxComponent implements OnInit {
 
   ngOnInit() {
   }
+  title = ' Les incidents Informatiques';
 
 }
