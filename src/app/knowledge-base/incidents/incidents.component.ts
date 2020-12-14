@@ -21,6 +21,14 @@ export class IncidentsComponent implements OnInit {
         console.log(err);
       });
   }
+  chercher(mot: any) {
+    this.http.get('http://localhost:9090/incidents/search/byDescription?motcle=' + mot)
+      .subscribe(data => {
+        this.incidents = data;
+      }, err => {
+        console.log(err);
+      });
+  }
 
 
   isResolu(resolu: any) {
