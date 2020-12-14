@@ -29,9 +29,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpEvent, HttpRequest} from '@angular/common/http';
 import {Observable, BehaviorSubject} from 'rxjs';
 import { User } from '../model/user';
-import {UserService} from '../service/user.service'
-import { truncateSync } from 'fs';
-//import { JwtHelperService } from "@auth0/angular-jwt";
+import {UserService} from '../service/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -42,7 +40,7 @@ export class AuthentificationService {
   public authenticated: boolean;
   public authenticatedUser;
   //public roles:any[]=[]
-  
+
 
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser;
@@ -51,7 +49,7 @@ export class AuthentificationService {
   constructor(private http: HttpClient, private userService: UserService) {
       this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
     //  this.currentUser = this.currentUserSubject.asObservable();
-      
+
   }
 
   authenticate(email,password){
@@ -60,7 +58,7 @@ export class AuthentificationService {
     //return this.http.post('http://localhost:4200/login',this.user,{observe:'response'})
 
     this.userService.findAll().subscribe(data => {
-      this.users = data; 
+      this.users = data;
     });
     console.log(this.users.length);
     let user;
@@ -68,19 +66,19 @@ export class AuthentificationService {
       if(u.email===email && u.password===password){
         user=u;
        }
-     
+
      if(user){
       this.authenticated=true;
       this.authenticatedUser=user;
        localStorage.setItem("authenticatedUser",JSON.stringify(this.authenticatedUser));
        return true;
      }
-    
+
     })
-    
+
     this.authenticated=false;
     return false;
-    
+
   }
 
   loadUser(){
@@ -109,7 +107,7 @@ loadToken(){
   this.jwtToken=localStorage.getItem('token')
 }
 isAdmin(){
-   
+
     for (let r of this.roles){
       //  console.log(r)
       if(r=='ADMIN') return true;
@@ -127,10 +125,10 @@ isAuthenticated(){
 }
 
 logout(){
-  
+
     //this.jwtToken=null;
     this.authenticated=false;
-  
+
    localStorage.removeItem('authenticatedUse');
 
   }
