@@ -11,10 +11,10 @@ import { ComposeMailComponent } from './compose-mail/compose-mail.component';
 import { DisplayMailComponent } from './display-mail/display-mail.component';
 import { LoginComponent } from './login/login.component';
 import { GmailInboxComponent } from './PageCollaborateur/gmail-inbox/gmail-inbox.component';
+import {IncidentsComponent} from './knowledge-base/incidents/incidents.component';
 
 
 const routes: Routes = [
-  //{path: 'pageprincipale', component: GmailInboxComponent },
     { path: 'users', component: UserListComponent },
   { path: 'adduser', component: UserFormComponent },
     {path: 'test', component: UsersComponent},
@@ -25,6 +25,7 @@ const routes: Routes = [
   {path: 'compose-mail', component: ComposeMailComponent},
   {path: 'display-mail', component: DisplayMailComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'incidents', component: IncidentsComponent}
 ];
 
 @NgModule({

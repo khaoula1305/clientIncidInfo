@@ -19,6 +19,8 @@ import { ComposeMailComponent } from './compose-mail/compose-mail.component';
 import { DisplayMailComponent } from './display-mail/display-mail.component';
 import { LoginComponent } from './login/login.component';
 import {IncidentService} from './service/incident.service';
+import {KnowledgeBaseModule} from './knowledge-base/knowledge-base.module';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +34,6 @@ import {IncidentService} from './service/incident.service';
     IncidentFormComponent,
     BoiteMailComponent,
     IncidentListeComponent,
-//    GmailInboxComponent,
     ComposeMailComponent,
     DisplayMailComponent,
     LoginComponent
@@ -42,6 +43,8 @@ import {IncidentService} from './service/incident.service';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    FormsModule,
+    KnowledgeBaseModule
   ],
   providers: [UserService, IncidentService],
   bootstrap: [AppComponent]

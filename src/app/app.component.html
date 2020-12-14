@@ -1,31 +1,25 @@
 <!-- Page Wrapper -->
 <div id="wrapper">
   <!--Sidebar-->
-  <app-side-bar ></app-side-bar>
+  <app-side-bar *ngIf="isAuth"></app-side-bar>
+
   <!-- Content Wrapper -->
   <div id="content-wrapper" class="d-flex flex-column">
     <!-- Main Content -->
     <div id="content">
       <!-- Topbar -->
-      <app-top-bar></app-top-bar>
+      <app-top-bar *ngIf="isAuth"></app-top-bar>
       <!-- Begin Page Content -->
       <div class="container-fluid">
-        <!-- Page Heading -->
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-          <h1 class="h3 mb-0 text-gray-800">L'utilisateur: User.name</h1>
-        </div>
         <!-- Content Row -->
         <div class="row">
           <div class="col-lg-12 mb-4">
-            <!-- Illustrations -->
             <div class="card shadow mb-4">
-              <!--div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
-              </div-->
               <div class="card-body">
                 <div class="text-center">
-                  <!-- <h1>Here show all messages between user and Helpdesk</h1> -->
-                  <!-- <app-boite-mail></app-boite-mail> -->
+                  <h1>Gestion des incidents informatiques</h1>
+                  <app-login *ngIf="isAuth==false"></app-login>
+                  <button (click)="auth()" [disabled]="isAuth" routerLink="incidents" *ngIf="isAuth==false">Authentifier</button>
                   <router-outlet></router-outlet>
                 </div>
               </div>

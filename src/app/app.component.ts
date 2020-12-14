@@ -8,8 +8,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AppComponent {
   title = ' Les incidents Informatiques';
-  isAuth: boolean;
-
+  isAuth = false;
+  isTechnician = false;
   auth() {
     this.isAuth = true;
   }
