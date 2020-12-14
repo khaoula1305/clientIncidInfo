@@ -10,7 +10,7 @@ export class DataService {
 
   // Stocker numero de mail clické afin de l'ouvrir et fonction pour changer son num
 
-  //mail: string
+  //mail: number
   /*private mailSource = new BehaviorSubject<string>("10");
   currentMail = this.mailSource.asObservable();
 
@@ -19,16 +19,16 @@ export class DataService {
   }
   constructor() { }*/
 
-  //mail: string
-  private mailSource = new BehaviorSubject<number>(10);
+  //mail: number
+  /*private mailSource = new BehaviorSubject<number>(10);
   currentMail = this.mailSource.asObservable();
 
   changenumberMail(mail: number){
     this.mailSource.next(mail);
   }
-  constructor() { }
+  constructor() { }*/
 
- /* mail: Message;
+  mail: Message;
   // Stocker message clické afin de l'ouvrir et fonction pour changer son num
   private mailSource = new BehaviorSubject<Message>(null);
   currentMail = this.mailSource.asObservable();
@@ -36,6 +36,6 @@ export class DataService {
   changenumberMail(mail: Message){
     this.mailSource.next(mail);
   }
-  constructor() { }*/
+  constructor() { }
 
 }

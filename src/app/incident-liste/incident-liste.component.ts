@@ -1,6 +1,8 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-
+import { Incident } from '../model/incident';
+import {IncidentService} from '../service/incident.service'
+import { DataService } from "../service/data.service"
 @Component({
   selector: 'app-incident-liste',
   templateUrl: './incident-liste.component.html',
@@ -8,17 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IncidentListeComponent implements OnInit {
 
-  public incidents;
+  incidents: Incident[];
 
-  constructor(private http: HttpClient) { }
+  constructor(private incidentService: IncidentService) { }
 
   ngOnInit() {
-    this.http.get('http://localhost:9090/incidents')
-      .subscribe(data => {
-        this.incidents = data;
-      }, err => {
-        console.log(err);
-      });
+    this.incidentService.findAllIncidents().subscribe(data => {
+      this.incidents = data;
+    });
   }
 
 }

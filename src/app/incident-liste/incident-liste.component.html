@@ -13,7 +13,7 @@
           </tr>
         </thead>
         <tbody *ngIf="incidents">
-           <tr *ngFor="let incident of incidents._embedded.incidents">
+           <tr *ngFor="let incident of incidents">
             <td>{{ incident.id }}</td>
             <td>{{ incident.titre }}</td>
             <td>{{ incident.description }}</td>

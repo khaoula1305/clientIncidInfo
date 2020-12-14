@@ -10,9 +10,11 @@ import { IncidentListeComponent } from './incident-liste/incident-liste.componen
 import { ComposeMailComponent } from './compose-mail/compose-mail.component';
 import { DisplayMailComponent } from './display-mail/display-mail.component';
 import { LoginComponent } from './login/login.component';
+import { GmailInboxComponent } from './PageCollaborateur/gmail-inbox/gmail-inbox.component';
 
 
 const routes: Routes = [
+  //{path: 'pageprincipale', component: GmailInboxComponent },
     { path: 'users', component: UserListComponent },
   { path: 'adduser', component: UserFormComponent },
     {path: 'test', component: UsersComponent},

@@ -5,7 +5,11 @@ import { from } from 'rxjs';
 import { Message } from '../model/message';
 import {MessageService} from '../service/message.service'
 import { DataService } from "../service/data.service"
+import {AuthentificationService} from "../service/authentification.service"
+import { User } from '../model/user';
+import {UserService} from '../service/user.service'
 import { stringify } from 'querystring';
+
 
 @Component({
   selector: 'app-boite-mail',
@@ -26,18 +30,21 @@ export class BoiteMailComponent implements OnInit {
   messages: Message[];
   //nbrMailClicked: number;
   
-  constructor(private messageService: MessageService,private http:HttpClient,private router: Router, private data2: DataService) {
+  constructor(private messageService: MessageService,private http:HttpClient,private router: Router, private data2: DataService, private data3: AuthentificationService) {
   }
-  nbrMailClicked:number;
+  MailClicked:Message;
+  connectedUser: User;
 
   ngOnInit() {
     // To fill table with messages
-    this.messageService.findAll().subscribe(data => {
+    this.messageService.findAllMessages().subscribe(data => {
       this.messages = data;
     });
-    this.data2.currentMail.subscribe(mail => this.nbrMailClicked = mail)
-    //to get clickable mail
-    //this.data2.currentMessage.subscribe(message => this.hnaya = message)
+    // Variable globale message clické
+    this.data2.currentMail.subscribe(mail => this.MailClicked = mail)
+    //Variable global user connected
+    //this.data3.currentUser.subscribe(user => this.connectedUser = user);
+
   }
   //change value of data
   /*newMessage(a:number){
@@ -64,9 +71,10 @@ export class BoiteMailComponent implements OnInit {
     this.router.navigate(['/display-mail']);
   }*/
 
-  goToMail(event,a:number){
-    console.log("hna ai tkteb l msg avant " + this.nbrMailClicked +"msg apres :"+ a);
+  goToMail(event,a:Message){
+    //console.log(this.connectedUser.nom);
     this.data2.changenumberMail(a);
+    console.log("hna ai tkteb l msg avant " + this.MailClicked +"msg apres :"+ a);
     this.router.navigate(['/display-mail']);
   }
 

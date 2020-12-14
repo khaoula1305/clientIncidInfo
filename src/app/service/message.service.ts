@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Message} from '../model/message';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
+import {map} from 'rxjs/operators'
 
 @Injectable({providedIn: 'root'}) 
 export class MessageService {
@@ -11,8 +12,11 @@ export class MessageService {
     this.MessagesUrl = 'http://localhost:9090/messages';
   }
 
-  public findAll(): Observable<Message[]> {
-    return this.http.get<Message[]>(this.MessagesUrl);
+  findAllMessages(): Observable<Array<Message>> {
+    return this.http.get(this.MessagesUrl).pipe(
+    map((data: any) => {
+      return data._embedded.messages as Message[];
+    }))
   }
 
   public save(message: Message) {
