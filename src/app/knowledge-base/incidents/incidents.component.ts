@@ -32,7 +32,7 @@ export class IncidentsComponent implements OnInit {
 
 
   isResolu(resolu: any) {
-    if (resolu === true) {
+    if (resolu == true) {
       return 'text-primary';
     } else { return 'text-danger'; }
 

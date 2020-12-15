@@ -29,7 +29,7 @@ export class BoiteMailComponent implements OnInit {
 //Khawla code
   messages: Message[];
   //nbrMailClicked: number;
-  
+
   constructor(private messageService: MessageService,private http:HttpClient,private router: Router, private data2: DataService, private data3: AuthentificationService) {
   }
   MailClicked:Message;
@@ -41,7 +41,7 @@ export class BoiteMailComponent implements OnInit {
       this.messages = data;
     });
     // Variable globale message clické
-    this.data2.currentMail.subscribe(mail => this.MailClicked = mail)
+    this.data2.currentMail.subscribe(mail => this.MailClicked = mail);
     //Variable global user connected
     //this.data3.currentUser.subscribe(user => this.connectedUser = user);
 
@@ -71,14 +71,14 @@ export class BoiteMailComponent implements OnInit {
     this.router.navigate(['/display-mail']);
   }*/
 
-  goToMail(event,a:Message){
+  goToMail(event,a : Message){
     //console.log(this.connectedUser.nom);
     this.data2.changenumberMail(a);
     console.log("hna ai tkteb l msg avant " + this.MailClicked +"msg apres :"+ a);
     this.router.navigate(['/display-mail']);
   }
 
-  
+
 
 //Youssefi Code
 
@@ -95,7 +95,7 @@ export class BoiteMailComponent implements OnInit {
       })
   }*/
 
-  
-  
+
+
 }
 

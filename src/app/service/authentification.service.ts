@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpEvent, HttpRequest} from '@angular/common/http';
 import {Observable, BehaviorSubject} from 'rxjs';
 import { User } from '../model/user';
-import {UserService} from '../service/user.service'
+import {UserService} from '../service/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ import {UserService} from '../service/user.service'
 export class AuthentificationService {
 
   public host:string="https://localhost:9090";
-  public authenticated: boolean;
+  public authenticated = false;
   public authenticatedUser;
 
 
@@ -29,11 +29,12 @@ export class AuthentificationService {
   }
 
   authenticate(email,password){
-    this.user.email=email
-    this.user.password=password
+    this.user.email=email;
+    this.user.password=password;
     //return this.http.post('http://localhost:4200/login',this.user,{observe:'response'})
 
     let user;
+
     console.log(this.users);
     this.users.forEach(u=>{
       if(u.email===email && u.password===password){

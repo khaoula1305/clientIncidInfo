@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators'
 
-@Injectable({providedIn: 'root'}) 
+@Injectable({providedIn: 'root'})
 export class IncidentService {
   private IncidentsUrl: string;
 
@@ -16,7 +16,7 @@ export class IncidentService {
     return this.http.get(this.IncidentsUrl).pipe(
     map((data: any) => {
       return data._embedded.incidents as Incident[];
-    }))
+    }));
   }
 
   public save(incident: Incident) {

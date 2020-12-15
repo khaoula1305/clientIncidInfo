@@ -1,8 +1,7 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Incident } from '../model/incident';
-import {IncidentService} from '../service/incident.service'
-import { DataService } from "../service/data.service"
+import {IncidentService} from '../service/incident.service';
 @Component({
   selector: 'app-incident-liste',
   templateUrl: './incident-liste.component.html',

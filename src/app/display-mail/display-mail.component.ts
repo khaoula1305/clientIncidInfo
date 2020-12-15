@@ -16,7 +16,6 @@ export class DisplayMailComponent implements OnInit {
   constructor(private data2: DataService) { }
 
   ngOnInit() {
-    //Get Id of clicked mail to display
     // tslint:disable-next-line:no-unused-expression
   this.data2.currentMail.subscribe(mail => this.nbrMailClicked = mail);
 

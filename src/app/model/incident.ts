@@ -7,5 +7,6 @@ export class Incident {
   division: string;
   affectedto: string;
   resolue: boolean;
+  solution: string;
 
 }

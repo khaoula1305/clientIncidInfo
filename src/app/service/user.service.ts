@@ -17,9 +17,8 @@ export class UserService {
     return this.http.get(this.usersUrl).pipe(
     map((data: any) => {
       return data._embedded.users as User[];
-    }))
+    }));
   }
-
   public save(user: User) {
     return this.http.post<User>(this.usersUrl, user);
   }
