@@ -24,25 +24,14 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  checkLogin() {
-    if (this.loginservice.authenticate(this.mail, this.password)
-    ) {
-      this.appcompoent.auth();
-      // tslint:disable-next-line:triple-equals
-      if (this.loginservice.currentUser.typeCompte == 'Technicien') {
-        this.appcompoent.isTechnician();
-        this.router.navigate(['/incidents']);
-      } else { this.router.navigate(['/boite-mail']); }
-    this.invalidLogin = false;
-    } else {
-      console.log(this.mail);
-      console.log(this.password);
-      alert(' Email ou mot de passe incorrecte');
-    }
-this.invalidLogin = true;
-  }
-
   onSubmit() {
-    this.checkLogin();
+    if (this.loginservice.authenticate(this.mail, this.password)) {
+      this.appcompoent.auth();
+      this.router.navigate(['/boite-mail']); 
+      this.invalidLogin = false;
+    } else {
+      alert(' Email ou mot de passe incorrecte');
+    this.invalidLogin = true;
+    }
   }
 }

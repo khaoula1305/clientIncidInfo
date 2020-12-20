@@ -18,22 +18,13 @@ import { stringify } from 'querystring';
 })
 export class BoiteMailComponent implements OnInit {
 
-  // par defaut
-  /*
-  constructor() { }
-
-  ngOnInit() {
-  }
-  */
-
-//Khawla code
   messages: Message[];
-  //nbrMailClicked: number;
-
-  constructor(private messageService: MessageService,private http:HttpClient,private router: Router, private data2: DataService, private data3: AuthentificationService) {
-  }
   MailClicked:Message;
   connectedUser: User;
+
+  constructor(private messageService: MessageService,private http:HttpClient,private router: Router, private data2: DataService, private data3: AuthentificationService) {
+    
+  }
 
   ngOnInit() {
     // To fill table with messages
@@ -41,61 +32,17 @@ export class BoiteMailComponent implements OnInit {
       this.messages = data;
     });
     // Variable globale message clické
-    this.data2.currentMail.subscribe(mail => this.MailClicked = mail);
+    //this.data2.currentMessage.subscribe(mail => this.MailClicked = mail);
+
     //Variable global user connected
     //this.data3.currentUser.subscribe(user => this.connectedUser = user);
 
   }
-  //change value of data
-  /*newMessage(a:number){
-    this.data2.changenumberMail(a);
-  }*/
-  /*goToMail(a:number){
-    //this.http.get('/display-mail');
-    let num:string;
-    num = a.toString( [radix] ));
-    this.data2.changenumberMail(num);
-    this.router.navigate(['/display-mail']);
-  }*/
-
-  /*
-  goToMail(event,a:Message){
-    console.log("hna ai tkteb l msg " + a.id);
-    this.data2.changenumberMail(a);
-    this.router.navigate(['/display-mail']);
-  }*/
-
-  /*goToMail(event,a:string){
-    console.log("hna ai tkteb l msg avant " + this.data2.currentMail.pipe() +"msg apres :"+ a);
-    this.data2.changenumberMail(a);
-    this.router.navigate(['/display-mail']);
-  }*/
 
   goToMail(event,a : Message){
-    //console.log(this.connectedUser.nom);
-    this.data2.changenumberMail(a);
-    console.log("hna ai tkteb l msg avant " + this.MailClicked +"msg apres :"+ a);
+    this.data2.changeClickedMail(a);
+    //console.log("hna ai tkteb l msg avant " + this.data2.getClickedMail().id +" -- msg apres :"+ a.titre);
     this.router.navigate(['/display-mail']);
   }
-
-
-
-//Youssefi Code
-
-  /*public messages;
-
-  constructor(private http:HttpClient,private router: Router) { }
-
-  ngOnInit() {
-    this.http.get("http://localhost:9090/messages")
-      .subscribe(data=>{
-        this.messages=data;
-      },err=>{
-        console.log(err);
-      })
-  }*/
-
-
-
 }
 

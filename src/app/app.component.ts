@@ -11,7 +11,7 @@ export class AppComponent {
   constructor(private loginservice: AuthentificationService) {
   }
   title = ' Les incidents Informatiques';
-  isAuth = this.loginservice.authenticated;
+  isAuth = this.loginservice.isAuthenticated();
   isTech = true;
 
   isTechnician() {

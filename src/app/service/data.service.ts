@@ -8,34 +8,23 @@ import {MessageService} from '../service/message.service'
 
 export class DataService {
 
-  // Stocker numero de mail clické afin de l'ouvrir et fonction pour changer son num
-
-  //mail: number
-  /*private mailSource = new BehaviorSubject<string>("10");
-  currentMail = this.mailSource.asObservable();
-
-  changenumberMail(mail: string){
-    this.mailSource.next(mail);
-  }
-  constructor() { }*/
-
-  //mail: number
-  /*private mailSource = new BehaviorSubject<number>(10);
-  currentMail = this.mailSource.asObservable();
-
-  changenumberMail(mail: number){
-    this.mailSource.next(mail);
-  }
-  constructor() { }*/
-
   mail: Message;
+  private currentMessageSubject: BehaviorSubject<Message>;
+  public currentMessage;
+  
   // Stocker message clické afin de l'ouvrir et fonction pour changer son num
-  private mailSource = new BehaviorSubject<Message>(null);
-  currentMail = this.mailSource.asObservable();
+  constructor() {
+    this.currentMessageSubject =new BehaviorSubject<Message>(JSON.parse(localStorage.getItem('currentMessage')));
+    this.currentMessage =this.currentMessageSubject.asObservable();
+   }
 
-  changenumberMail(mail: Message){
-    this.mailSource.next(mail);
+  changeClickedMail(mail: Message){
+    //this.currentMessageSubject.next(mail);
+    this.currentMessage=mail;
+    //localStorage.setItem("authenticatedUser",JSON.stringify(this.authenticatedUser));
   }
-  constructor() { }
+  getClickedMail(){
+    return this.currentMessage;
+  }
 
 }

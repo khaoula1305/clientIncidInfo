@@ -10,27 +10,12 @@ import {MessageService} from '../service/message.service'
 })
 export class DisplayMailComponent implements OnInit {
 
-  //nbrMailClicked: string;
-  nbrMailClicked: number;
+  MailClicked: Message;
 
   constructor(private data2: DataService) { }
 
   ngOnInit() {
-    // tslint:disable-next-line:no-unused-expression
-  this.data2.currentMail.subscribe(mail => this.nbrMailClicked = mail);
+    this.MailClicked=this.data2.getClickedMail();
 
   }
-  /*  si data est de type Message
-
-  message: Message;
-
-  constructor(private data2: DataService) { }
-
-  ngOnInit() {
-    //Get Id of clicked mail to display
-  this.data2.currentMail.subscribe(mail => this.message = mail)
-
-  }
-  */
-
 }

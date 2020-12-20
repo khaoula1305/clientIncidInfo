@@ -1,13 +1,25 @@
 <div class="card ">
-    <div class="card-header  ">
-      Titre du Message {{ nbrMailClicked }}
-      <div class="right">
-      <p class="date">2020/02/15 12:29</p>
+    <div class="card-header">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h2 class="card-title">{{ MailClicked.titre }}</h2>
+            <p>Envoyé par: {{ MailClicked.sender }}</p>
+            <p>à: {{ MailClicked.reciever }}</p>
+          </div>
+          <div class="right col col-lg-3">
+            <p class="date">{{ MailClicked.date }}</p>
+            <p class="traite" [ngClass]="{
+                'traite-oui' : MailClicked.traite == true,
+                'traite-non' : MailClicked.traite == false
+            }"
+            > {{ MailClicked.traite }} </p>
+          </div>
+        </div>
       </div>
     </div>
     <div class="card-body">
-      <h5 class="card-title">Envoyé par:</h5>
-      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+      <p class="card-text">{{ MailClicked.description }}</p>
     </div>
     <div class="card-footer text-muted  right">
       <a href="/compose-mail" class="btn btn-primary">Répondre</a>

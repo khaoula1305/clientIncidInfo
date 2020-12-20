@@ -6,6 +6,7 @@
 }
 .right{
     text-align: right;
+    display: inline-block;
 }
 .date{
     color: black;
@@ -13,7 +14,8 @@
     border: none;
     padding: 5px 10px;
     text-decoration: none;
-    display: inline;
+    display: block;
+    text-align: center;
     font-size: 12px;
     margin: 4px 2px;
     border-radius: 12px;
@@ -21,4 +23,23 @@
 
 .btn{
     margin: 10px;
+}
+
+
+.traite{
+    color: black;
+    border: none;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 12px;
+    margin: 4px 2px;
+    border-radius: 12px;
+}
+.traite-non{
+    background-color: rgb(247, 100, 100);
+}
+.traite-oui{
+    background-color: rgb(79, 250, 102);
 }

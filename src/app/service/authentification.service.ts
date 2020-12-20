@@ -3,13 +3,13 @@ import {HttpClient, HttpEvent, HttpRequest} from '@angular/common/http';
 import {Observable, BehaviorSubject} from 'rxjs';
 import { User } from '../model/user';
 import {UserService} from '../service/user.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthentificationService {
 
-  public host:string="https://localhost:9090";
   public authenticated = false;
   public authenticatedUser;
 
@@ -19,32 +19,34 @@ export class AuthentificationService {
 
   user=new User();
   users: User[];
+  public id;
+
+
   constructor(private http: HttpClient, private userService: UserService) {
       this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
       this.currentUser = this.currentUserSubject.asObservable();
 
-    this.userService.findAllUsers().subscribe(data => {
-      this.users = data;
-    });
+      this.userService.findAllUsers().subscribe(data => {
+        this.users = data;
+      });
   }
 
   authenticate(email,password){
     this.user.email=email;
     this.user.password=password;
-    //return this.http.post('http://localhost:4200/login',this.user,{observe:'response'})
-
     let user;
 
-    console.log(this.users);
     this.users.forEach(u=>{
       if(u.email===email && u.password===password){
         user=u;
        }
       });
+
     if(user){
-    this.authenticated=true;
-    this.authenticatedUser=user;
-    this.currentUser=user;
+      console.log("user connected "+ user.nom );
+      this.authenticated=true;
+      this.authenticatedUser=user;
+      this.currentUser=user;
       localStorage.setItem("authenticatedUser",JSON.stringify(this.authenticatedUser));
       console.log("Connected successfully");
       return true;
@@ -78,12 +80,8 @@ isAuthenticated(){
 }
 
 logout(){
-
-    //this.jwtToken=null;
     this.authenticated=false;
-
-   localStorage.removeItem('authenticatedUse');
-
+    localStorage.removeItem('authenticatedUse');
   }
 
 }

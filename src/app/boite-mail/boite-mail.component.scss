@@ -13,9 +13,14 @@ td{
 td{
     text-align: left;
 }
+.read-non{
+    background-color: rgb(208, 214, 214);
+}
+.read-oui{
+    //background-color: rgb(255, 255, 255);
+}
 .traite{
     color: black;
-    background-color: rgb(247, 100, 100);
     border: none;
     padding: 5px 10px;
     text-align: center;
@@ -24,6 +29,12 @@ td{
     font-size: 12px;
     margin: 4px 2px;
     border-radius: 12px;
+}
+.traite-non{
+    background-color: rgb(247, 100, 100);
+}
+.traite-oui{
+    background-color: rgb(79, 250, 102);
 }
 .sender{
     font-weight: bold;
