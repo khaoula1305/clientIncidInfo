@@ -20,6 +20,7 @@ import { DisplayMailComponent } from './display-mail/display-mail.component';
 import { LoginComponent } from './login/login.component';
 import {IncidentService} from './service/incident.service';
 import {KnowledgeBaseModule} from './knowledge-base/knowledge-base.module';
+import { ManagerComponent } from './manager/manager.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import {KnowledgeBaseModule} from './knowledge-base/knowledge-base.module';
     IncidentListeComponent,
     ComposeMailComponent,
     DisplayMailComponent,
-    LoginComponent
+    LoginComponent,
+    ManagerComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,24 @@
+<div class="card my-5">
+  <div class="card-body">
+    <form action="/action_page.php">
+      <label for="fname">Titre:</label>
+      <input type="text" class="form-control"  id="fname"  name="fname"  required ><br><br>
+      <label for="lname">Description:</label>
+
+      <textarea cols="20" rows="6" class="form-control" id="lname" name="lname" placeholder="Votre description" required ></textarea>
+
+      <br><br>
+
+
+      <br />
+      Technicien en charge :<br />
+
+      <SELECT name="nom" size="1" *ngIf="users">
+        <option *ngFor="let u of users._embedded.users">{{u.nom}}</option>
+      </SELECT><br />
+      <button type="submit" [disabled]="!form-helpd.form.valid"
+              class="btn btn-info">Submit</button>
+      <div></div>
+    </form>
+  </div>
+</div>
