@@ -10,13 +10,13 @@ import { UserService } from '../service/user.service';
 export class ManagerComponent implements OnInit {
 
   public users;
-  constructor( private userService:UserService) { }
+  constructor( private userService: UserService) { }
 
   ngOnInit() {
-    this.userService.findAll().subscribe(
-      data=>{this.users=data;},
-      err=>{console.log(err);}
-    )
+    this.userService.findAllUsers().subscribe(
+      data => {this.users = data; },
+      err => {console.log(err); }
+    );
 
   }
 
