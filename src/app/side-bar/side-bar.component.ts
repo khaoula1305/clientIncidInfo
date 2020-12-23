@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthentificationService} from '../service/authentification.service';
-import {AuthentificationService} from "../service/authentification.service"
 
 @Component({
   selector: 'app-side-bar',
@@ -14,7 +13,7 @@ export class SideBarComponent implements OnInit {
     const typeCompteUser = this.authentificationService.getTypeCompteUser();
     // tslint:disable-next-line:triple-equals
     switch (typeCompteUser) {
-      case 'Helpdesk': this.isAdmin = true;
+      case 'Administrateur': this.isAdmin = true;
       // tslint:disable-next-line:no-switch-case-fall-through
       case 'Technicien': this.isTech = true;
     }
@@ -23,9 +22,9 @@ export class SideBarComponent implements OnInit {
   ngOnInit() {
   }
 
-  Deconnexion(){
+  /*Deconnexion(){
     this.authentificationServide.logout();
     console.log("Deconnxion");
-  }
+  }*/
 
 }

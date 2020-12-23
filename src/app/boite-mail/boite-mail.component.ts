@@ -9,6 +9,7 @@ import {AuthentificationService} from '../service/authentification.service';
 import { User } from '../model/user';
 import {UserService} from '../service/user.service'
 import { stringify } from 'querystring';
+import { connected } from 'process';
 
 
 
@@ -23,8 +24,8 @@ export class BoiteMailComponent implements OnInit {
   MailClicked:Message;
   connectedUser: User;
 
-  constructor(private messageService: MessageService,private http:HttpClient,private router: Router, private data2: DataService, private data3: AuthentificationService) {
-
+  constructor(private messageService: MessageService,private http:HttpClient,private router: Router, private data2: DataService, private authentificationservice: AuthentificationService) {
+    this.connectedUser = this.authentificationservice.getUser();
   }
 
   ngOnInit() {

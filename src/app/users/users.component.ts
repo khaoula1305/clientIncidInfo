@@ -21,7 +21,7 @@ export class UsersComponent implements OnInit {
   connectedUser: User;
 
   constructor(private messageService: MessageService,private http:HttpClient,private router: Router, private data2: DataService, private data3: AuthentificationService) {
-    
+    this.connectedUser = this.data3.getUser();
   }
 
   ngOnInit() {
