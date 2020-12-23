@@ -82,6 +82,7 @@ isAuthenticated(){
 logout(){
     this.authenticated=false;
     localStorage.removeItem('authenticatedUse');
+    console.log("logout function user " + this.getUser().nom);
   }
 
 }

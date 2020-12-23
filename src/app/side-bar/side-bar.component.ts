@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthentificationService} from "../service/authentification.service"
 
 @Component({
   selector: 'app-side-bar',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideBarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authentificationServide :AuthentificationService) {
+ }
 
   ngOnInit() {
+  }
+
+  Deconnexion(){
+    this.authentificationServide.logout();
+    console.log("Deconnxion");
   }
 
 }
