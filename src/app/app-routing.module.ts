@@ -26,7 +26,7 @@ const routes: Routes = [
   {path: 'display-mail', component: DisplayMailComponent},
   {path: 'login', component: LoginComponent},
   {path: 'incidents', component: IncidentsComponent},
-  {path: 'manager', component:ManagerComponent}
+  {path: 'manager', component: ManagerComponent}
 ];
 
 @NgModule({

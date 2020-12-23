@@ -15,7 +15,9 @@ export class AppComponent {
   isTech = true;
 
   isTechnician() {
-    this.isTech = false;
+    if (this.loginservice.getTypeCompteUser() == 'Technicien') {
+    this.isTech = false ;
+    }
   }
   auth() {
     this.isAuth = this.loginservice.authenticated;
