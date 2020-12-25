@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from "../service/data.service"
+import { DataService } from '../service/data.service'
 import { Message } from '../model/message';
 import {MessageService} from '../service/message.service'
 
@@ -15,7 +15,7 @@ export class DisplayMailComponent implements OnInit {
   constructor(private data2: DataService) { }
 
   ngOnInit() {
-    this.MailClicked=this.data2.getClickedMail();
+    this.MailClicked = this.data2.getClickedMail();
 
   }
 }

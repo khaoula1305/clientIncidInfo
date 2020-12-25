@@ -12,7 +12,7 @@ export class TopBarComponent implements OnInit {
 
   inc: IncidentsComponent ;
   currentUser: User;
-  constructor(private authentificationServide :AuthentificationService) {
+  constructor(private authentificationServide : AuthentificationService) {
       this.currentUser = this.authentificationServide.getUser();
    }
 

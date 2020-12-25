@@ -1,32 +1,38 @@
 <div class="card my-5">
     <div class="card-body">
-      <form (ngSubmit)="onSubmit()" #composeMail="ngForm">
+      <form (ngSubmit)="onSubmit(message)" novalidate #message="ngForm">
         <div class="form-group">
           <label for="titre">Titre de message</label>
-          <input type="text" [(ngModel)]="message.titre"
+          <input type="text"
                  class="form-control"
                  id="titre"
                  name="titre"
+                 ngModel required #titre="ngModel"
                  placeholder="Entrer le titre de message "
-                 required #titre="ngModel">
+               >
         </div>
-        <div [hidden]="!titre.pristine" class="alert alert-danger">titre is required</div>
+        <!--div [hidden]="!titre.pristine" class="alert alert-danger">titre is required</div-->
         <div class="form-group">
           <label for="description">Description</label>
-          <textarea  [(ngModel)]="message.description"
+          <textarea
                     cols="20"
                     rows="6"
                  class="form-control"
                  id="description"
                  name="description"
                  placeholder="Votre description"
-                 required #description="ngModel"></textarea>
-          <div [hidden]="!description.pristine" class="alert alert-danger">description is required</div>
+                    ngModel></textarea>
+          <!--div [hidden]="!description.pristine" class="alert alert-danger">description is required</div-->
         </div>
-        <button type="submit" [disabled]="!composeMail.form.valid"
-                class="btn btn-info">Envoyer à l'équipe Helpdesk</button>
+
+          <select  name="receiver" class="form-group"   size="1" *ngIf="receivers" ngModel>
+            <option value="">Envoyer à </option>
+            <option *ngFor="let r of receivers"  [value]="r.valueOf()" >{{r.valueOf()}}</option>
+          </select><br/>
+
+        <button type="submit"
+                class="btn btn-info">Envoyer</button>
       </form>
     </div>
   </div>
-  
-  
+

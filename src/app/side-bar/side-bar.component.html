@@ -20,7 +20,7 @@
   <li class="nav-item">
     <a routerLink="/test" class="nav-link"><i class="fa fa-paper-plane" aria-hidden="true"></i><span>Sent</span></a>
   </li>
-  <ng-container *ngIf="isAdmin ;then contenuForAdmin else contentForTech "> partie Admin ou bien le technicien</ng-container>
+  <ng-container *ngIf="isAdmin ;then contenuForAdmin else contentForNoAdmin "> partie Admin ou bien le technicien</ng-container>
   <ng-template #contenuForAdmin>
     <!------------------------------------More functions: for administrator: list users... -->
     <hr class="sidebar-divider">
@@ -39,37 +39,41 @@
       </div>
     </li>
   </ng-template>
-  <ng-template #contentForTech>
-    <ng-container *ngIf="isTech;else noTechNoAdmin"></ng-container>
+  <ng-template #contentForNoAdmin>
+    <ng-container *ngIf="isTech; then contenuForTech else noTechNoAdmin"></ng-container>
     <!------------this part is for technician. Don't touch it please--------->
-    <hr class="sidebar-divider">
-    <!-- Heading -->
-    <div class="sidebar-heading">
-      <a routerLink="/incidents" class="nav-link"><span style="color: #f3a199">Base de connaissances</span></a>
-    </div>
-    <hr class="sidebar-divider">
-    <!-- Heading -->
-    <div class="sidebar-heading">
-      A supprimer man hna
-    </div>
-    <!-- Nav Item - Pages Collapse Incidents -->
-    <li class="nav-item">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne"
-         aria-expanded="true" aria-controls="collapseTwo">
-        <i class="fas fa-fw fa-cog"></i>
-        <span>incidents</span>
-      </a>
-      <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-          <a class="collapse-item" routerLink="/AjoutIncident">Ajouter </a>
-          <a class="collapse-item" routerLink="/incident-liste">Visualiser</a>
-        </div>
+    <ng-template #contenuForTech>
+      <hr class="sidebar-divider">
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        <a routerLink="/incidents" class="nav-link"><span style="color: #f3a199">Base de connaissances</span></a>
       </div>
-    </li>
-
-  </ng-template>
-  <ng-template #noTechNoAdmin>
+      <hr class="sidebar-divider">
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        A supprimer man hna
+      </div>
+      <!-- Nav Item - Pages Collapse Incidents -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne"
+           aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>incidents</span>
+        </a>
+        <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" routerLink="/AjoutIncident">Ajouter </a>
+            <a class="collapse-item" routerLink="/incident-liste">Visualiser</a>
+          </div>
+        </div>
+      </li>
+      <li>
+        <a routerLink="/messages" class="nav-link"><span style="color: #f3a199">messages</span></a>
+      </li>
+    </ng-template>
+    <ng-template #noTechNoAdmin>
     <!-- part of amal and fairouz-->
+    </ng-template>
   </ng-template>
 
 

@@ -9,7 +9,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { UserService } from './service/user.service';
 import { UsersComponent } from './users/users.component';
-import { MessagesComponent } from './messages/messages.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { IncidentFormComponent } from './incident-form/incident-form.component';
@@ -29,7 +28,6 @@ import { ManagerComponent } from './manager/manager.component';
     UserListComponent,
     UserFormComponent,
     UsersComponent,
-    MessagesComponent,
     SideBarComponent,
     TopBarComponent,
     IncidentFormComponent,

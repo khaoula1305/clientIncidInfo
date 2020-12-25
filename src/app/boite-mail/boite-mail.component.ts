@@ -21,7 +21,7 @@ import { connected } from 'process';
 export class BoiteMailComponent implements OnInit {
 
   messages: Message[];
-  MailClicked:Message;
+  MailClicked: Message;
   connectedUser: User;
 
   constructor(private messageService: MessageService,private http:HttpClient,private router: Router, private data2: DataService, private authentificationservice: AuthentificationService) {

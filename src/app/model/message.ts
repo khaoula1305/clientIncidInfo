@@ -1,7 +1,7 @@
 export class Message {
     id: number;
     sender: string;
-    reciever: string;
+    receiver: string;
     titre: string;
     description: string;
     traite: boolean;
