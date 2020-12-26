@@ -45,7 +45,7 @@
   <div class="card-footer text-muted  right">
     <a (click)="showResponse()" class="btn btn-primary">Répondre</a>
   <ng-container *ngIf="isTech ; then contentForTech else contentForNoTech "> partie Admin ou bien le technicien</ng-container>
-  <ng-template #contentForTech>
+  <ng-template #contentForTech >
     <button routerLink="/AjoutIncident"  class="btn btn-primary"> Créer incident</button>
   </ng-template>
 

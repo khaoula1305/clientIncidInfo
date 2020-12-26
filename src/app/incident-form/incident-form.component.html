@@ -1,30 +1,46 @@
 <div class="card my-5">
   <div class="card-body">
-    <form (ngSubmit)="onSubmit()" #incidentForm="ngForm">
+    <form (ngSubmit)="onSubmit(incidentForm)" #incidentForm="ngForm">
       <div class="form-group">
         <label for="titre">Titre de l'incident</label>
-        <input type="text" [(ngModel)]="incident.titre"
+        <input type="text"
                class="form-control"
                id="titre"
+               ngModel
                name="titre"
-               placeholder="Entrer le titre de l'incident "
-               required #name="ngModel">
+               [(ngModel)]="MailClicked.titre"
+               required #titre="ngModel">
       </div>
-      <div [hidden]="!name.pristine" class="alert alert-danger">Name is required</div>
+      <div  class="alert alert-danger" *ngIf=" titre.invalid">Titre est obligatoire</div>
       <div class="form-group">
         <label for="description">Description</label>
-        <textarea  [(ngModel)]="incident.description"
-                  cols="20"
-                  rows="6"
-               class="form-control"
-               id="description"
-               name="description"
-               placeholder="Votre description"
-               required #description="ngModel"></textarea>
-        <div [hidden]="!description.pristine" class="alert alert-danger">description is required</div>
+        <textarea
+          cols="20"
+          rows="6"
+          class="form-control"
+          id="description"
+          ngModel
+          name="description"
+          [(ngModel)]="MailClicked.responses[0]"
+          required #description="ngModel"
+        ></textarea>
+        <div  class="alert alert-danger" *ngIf=" description.invalid">Description est obligatoire</div>
+      </div>
+      <div class="form-group">
+        <label for="solution">Solution</label>
+        <textarea
+          cols="20"
+          rows="6"
+          class="form-control"
+          id="solution"
+          ngModel
+          name="solution"
+          placeholder="Votre solution"
+          required #solution="ngModel"></textarea>
+        <div  class="alert alert-danger" *ngIf="solution.untouched && solution.invalid">Solution est obligatoire</div>
       </div>
       <button type="submit" [disabled]="!incidentForm.form.valid"
-              class="btn btn-info">Submit</button>
+              class="btn btn-info">Ajouter Solution</button>
     </form>
   </div>
 </div>

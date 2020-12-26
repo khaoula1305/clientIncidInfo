@@ -30,7 +30,10 @@ export class DisplayMailComponent implements OnInit {
         break;
       }
       case 'Technicien': {
+        // tslint:disable-next-line:triple-equals
+        // if ( this.MailClicked.sender != this.authentificationService.currentUser.nom && this.MailClicked.traite == false ) {
         this.isTech = true;
+        // }
         break;
       }
     }
@@ -38,7 +41,6 @@ export class DisplayMailComponent implements OnInit {
 
   ngOnInit() {
     this.MailClicked = this.data2.getClickedMail();
-    console.log(this.MailClicked);
   }
 
   showResponse() {
@@ -51,10 +53,7 @@ export class DisplayMailComponent implements OnInit {
     } else {
       const date: Date = new Date();
       const data = date.getDay() + '/' + date.getMonth() + '/' + date.getFullYear() + ' ' + date.getUTCHours() + ':' + date.getUTCMinutes();
-      console.log( m.value);
-      console.log(this.MailClicked);
       this.MailClicked.responses.push(m.value.description);
-      console.log(this.MailClicked);
       this.show = true;
       m.value.description = '';
       this.messageService.save(this.MailClicked).subscribe(result => this.router.navigate(['/display-mail']));
