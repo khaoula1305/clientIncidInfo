@@ -68,7 +68,9 @@ export class ComposeMailComponent {
       this.message.sender = this.connectedUser.nom;
       console.log( m.value);
       this.message.titre = m.value.titre;
-      this.message.description = m.value.description;
+      console.log(this.message);
+      this.message.responses.push(m.value.description);
+      console.log(this.message);
       this.message.receiver = m.value.receiver;
       this.messageService.save(this.message).subscribe(result => this.gotoMessageList());
     }

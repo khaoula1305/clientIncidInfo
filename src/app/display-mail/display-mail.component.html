@@ -18,17 +18,39 @@
         </div>
       </div>
     </div>
-    <div class="card-body">
-      <p class="card-text">{{ MailClicked.description }}</p>
+    <div class="card-body" *ngFor="let response of MailClicked.responses">
+      <p class="card-text">{{ response}}</p>
     </div>
+  <div class="card-body" [hidden]="show">
+    <form (ngSubmit)="onSubmit(message)"  #message="ngForm">
+      <div class="form-group">
+        <label for="description">Repondre</label>
+        <textarea
+          cols="20"
+          rows="6"
+          class="form-control"
+          id="description"
+          name="description"
+          placeholder="Votre response"
+          ngModel
+          required
+          #description="ngModel"
+        ></textarea>
+        <div *ngIf="description.touched && description.invalid" class="alert alert-danger">Description est obligatoire</div>
+      </div>
+      <button type="submit"
+              class="btn btn-info">Envoyer</button>
+    </form>
+  </div>
   <div class="card-footer text-muted  right">
-  <ng-container *ngIf="isTech ;then contenuForTech else contentForNoTech "> partie Admin ou bien le technicien</ng-container>
-  <ng-template #contenuForTech>
-    <button (click)="$event" class="btn-facebook"> Répondre</button>
+    <a (click)="showResponse()" class="btn btn-primary">Répondre</a>
+  <ng-container *ngIf="isTech ; then contentForTech else contentForNoTech "> partie Admin ou bien le technicien</ng-container>
+  <ng-template #contentForTech>
+    <button routerLink="/AjoutIncident"  class="btn btn-primary"> Créer incident</button>
   </ng-template>
+
   <ng-template #contentForNoTech>
-    <a routerLink="/compose-mail"  class="btn btn-primary">Répondre</a>
-    <a routerLink="/compose-mail"  class="btn btn-primary">Envoyer à</a>
+    <a routerLink="/compose-mail"  class="btn btn-primary">Transférer </a>
   </ng-template>
     </div>
   </div>
