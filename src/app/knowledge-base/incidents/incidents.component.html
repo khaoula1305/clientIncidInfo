@@ -1,33 +1,27 @@
 <div class="row" >
-
-  <div class="col-lg-6 mb-4" *ngFor="let incident of incidents._embedded.incidents">
-
-    <!-- Illustrations -->
-    <div class="card shadow mb-4">
-      <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold {{isResolu(incident.resolue)}}">{{ incident.titre }}</h6>
-      </div>
-      <div class="card-body">
-        <div class="text-center">
-          <!--image-->
-        </div>
-        <p>{{ incident.description }}</p>
-        <div *ngIf="incident.resolue;then contenu_bon else contenu_pas_bon">Le contenu saisi ici sera ignoré.</div>
-        <ng-template #contenu_bon>
-          <div class="btn btn-success btn-icon-split">
-                                        <span class="icon text-white-50">
-                                     La solution
-                                        </span>
-            <hr>
+  <ng-container *ngFor="let incident of incidents._embedded.incidents">
+    <ng-container *ngIf="incident.resolue">
+    <div class="col-lg-6 mb-4" >
+        <div class="card shadow mb-4">
+          <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold {{isResolu(incident.resolue)}}">{{ incident.titre }}</h6>
           </div>
-          <hr>
-          <span class="text">{{incident.solution}}</span>
-        </ng-template>
-          <ng-template  #contenu_pas_bon><button  class="btn btn-primary" type="button">Resoudre</button></ng-template>
+          <div class="card-body">
+            <div class="text-center">
+              <!--image-->
+            </div>
+            <p>{{ incident.description }}</p>
+            <hr>
 
-      </div>
+            <span class="badge badge-dark">{{ incident.date }}</span>
+            <span class="badge badge-warning">{{incident.division}}</span>
+            <hr>
+            <span class="badge-primary badge "> La solution: </span>
+            <span class="text">  {{ incident.solution }}</span>
+
+          </div>
+        </div>
     </div>
-
-  </div>
-
+    </ng-container>
+  </ng-container>
 </div>
