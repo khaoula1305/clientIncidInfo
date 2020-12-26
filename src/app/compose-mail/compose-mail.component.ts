@@ -59,15 +59,20 @@ export class ComposeMailComponent {
     this.connectedUser = this.authentificationService.getUser();
   }
   onSubmit(m: NgForm) {
-    const date: Date = new Date();
-    const data = date.getDay() + '/' + date.getMonth() + '/' + date.getFullYear() + ' ' + date.getUTCHours() + ':' + date.getUTCMinutes();
-    this.message.date = data;
-    this.message.sender = this.connectedUser.nom;
-    console.log( m.value);
-    this.message.titre = m.value.titre;
-    this.message.description = m.value.description;
-    this.message.receiver = m.value.receiver;
-    this.messageService.save(this.message).subscribe(result => this.gotoMessageList());
+    if ( m.untouched || m.invalid) {
+      alert('Remplir les champs obligatoires');
+    } else {
+      const date: Date = new Date();
+      const data = date.getDay() + '/' + date.getMonth() + '/' + date.getFullYear() + ' ' + date.getUTCHours() + ':' + date.getUTCMinutes();
+      this.message.date = data;
+      this.message.sender = this.connectedUser.nom;
+      console.log( m.value);
+      this.message.titre = m.value.titre;
+      this.message.description = m.value.description;
+      this.message.receiver = m.value.receiver;
+      this.messageService.save(this.message).subscribe(result => this.gotoMessageList());
+    }
+
   }
   /*onSubmit() {
     const date: Date = new Date();

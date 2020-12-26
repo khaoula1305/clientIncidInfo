@@ -1,17 +1,20 @@
 <div class="card my-5">
     <div class="card-body">
-      <form (ngSubmit)="onSubmit(message)" novalidate #message="ngForm">
+      <form (ngSubmit)="onSubmit(message)"  #message="ngForm">
         <div class="form-group">
           <label for="titre">Titre de message</label>
           <input type="text"
                  class="form-control"
                  id="titre"
+                 required
+                 maxlength="10"
+                 ngModel
                  name="titre"
-                 ngModel required #titre="ngModel"
+                 #titre="ngModel"
                  placeholder="Entrer le titre de message "
                >
         </div>
-        <!--div [hidden]="!titre.pristine" class="alert alert-danger">titre is required</div-->
+        <div [hidden]="!titre.pristine" class="alert alert-danger" *ngIf="titre.touched && titre.invalid">Titre est obligatoire</div>
         <div class="form-group">
           <label for="description">Description</label>
           <textarea
@@ -21,14 +24,26 @@
                  id="description"
                  name="description"
                  placeholder="Votre description"
-                    ngModel></textarea>
-          <!--div [hidden]="!description.pristine" class="alert alert-danger">description is required</div-->
+                    ngModel
+          required
+          #description="ngModel"
+          ></textarea>
+          <div *ngIf="description.touched && description.invalid" class="alert alert-danger">Description est obligatoire</div>
         </div>
-
-          <select  name="receiver" class="form-group"   size="1" *ngIf="receivers" ngModel>
+        <div  class="form-group">
+          <select required
+                  ngModel
+                  name="receiver"
+                  #receiver="ngModel"
+                  class="form-control"
+                  size="1"
+                  *ngIf="receivers" >
             <option value="">Envoyer à </option>
             <option *ngFor="let r of receivers"  [value]="r.valueOf()" >{{r.valueOf()}}</option>
-          </select><br/>
+            <div *ngIf="receiver.invalid" class="alert alert-danger">Description est obligatoire</div>
+          </select>
+        </div>
+
 
         <button type="submit"
                 class="btn btn-info">Envoyer</button>
