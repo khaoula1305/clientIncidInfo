@@ -21,8 +21,14 @@
     <div class="card-body">
       <p class="card-text">{{ MailClicked.description }}</p>
     </div>
-    <div class="card-footer text-muted  right">
-      <a routerLink="/compose-mail"  class="btn btn-primary">Répondre</a>
-      <a routerLink="/compose-mail"  class="btn btn-primary">Envoyer à</a>
+  <div class="card-footer text-muted  right">
+  <ng-container *ngIf="isTech ;then contenuForTech else contentForNoTech "> partie Admin ou bien le technicien</ng-container>
+  <ng-template #contenuForTech>
+    <button (click)="$event" class="btn-facebook"> Répondre</button>
+  </ng-template>
+  <ng-template #contentForNoTech>
+    <a routerLink="/compose-mail"  class="btn btn-primary">Répondre</a>
+    <a routerLink="/compose-mail"  class="btn btn-primary">Envoyer à</a>
+  </ng-template>
     </div>
   </div>
