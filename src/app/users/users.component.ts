@@ -1,13 +1,12 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import {​​​​​​​ ActivatedRoute, Router }​​​​​​​ from '@angular/router';
-import { from } from 'rxjs';
+import {ActivatedRoute, Router } from '@angular/router';
+
 import { Message } from '../model/message';
-import {MessageService} from '../service/message.service'
-import { DataService } from "../service/data.service"
-import {AuthentificationService} from "../service/authentification.service"
+import {MessageService} from '../service/message.service';
+import { DataService } from '../service/data.service';
+import {AuthentificationService} from '../service/authentification.service';
 import { User } from '../model/user';
-import {UserService} from '../service/user.service'
 
 @Component({
   selector: 'app-users',
@@ -17,7 +16,7 @@ import {UserService} from '../service/user.service'
 export class UsersComponent implements OnInit {
 
   messages: Message[];
-  MailClicked:Message;
+  MailClicked: Message;
   connectedUser: User;
 
   constructor(private messageService: MessageService,private http:HttpClient,private router: Router, private data2: DataService, private data3: AuthentificationService) {
