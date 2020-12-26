@@ -3,7 +3,7 @@ export class Message {
     sender: string;
     receiver: string;
     titre: string;
-    description: string;
+    responses: string[] = [''];
     traite: boolean;
     read: boolean;
     division: string;
