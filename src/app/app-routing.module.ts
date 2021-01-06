@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { GmailInboxComponent } from './PageCollaborateur/gmail-inbox/gmail-inbox.component';
 import {IncidentsComponent} from './knowledge-base/incidents/incidents.component';
 import {ManagerComponent} from './manager/manager.component';
+import { ModifyUserComponent } from './modify-user/modify-user.component';
 
 const routes: Routes = [
     { path: 'users', component: UserListComponent },
@@ -24,7 +25,8 @@ const routes: Routes = [
   {path: 'display-mail/:id', component: DisplayMailComponent},
   {path: 'login', component: LoginComponent},
   {path: 'incidents', component: IncidentsComponent},
-  {path: 'manager', component: ManagerComponent}
+  {path: 'manager', component: ManagerComponent},
+  {path: 'modify-user', component: ModifyUserComponent}
 ];
 
 @NgModule({

@@ -39,6 +39,10 @@ export class SideBarComponent implements OnInit {
       this.router.navigate(['boite-mail', locationData]); // navigate to same route
     });
   }
+  reloadPage() {
+    window.location.reload();
+    console.log("reload");
+ }
   /*Deconnexion(){
     this.authentificationServide.logout();
     console.log("Deconnxion");

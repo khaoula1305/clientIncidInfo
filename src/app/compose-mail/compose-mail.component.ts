@@ -5,7 +5,7 @@ import { Message } from '../model/message';
 import {AuthentificationService} from '../service/authentification.service';
 import { User } from '../model/user';
 import {FormControl, NgForm, Validators} from '@angular/forms';
-
+import { DataService } from '../service/data.service';
 @Component({
   selector: 'app-compose-mail',
  templateUrl: './compose-mail.component.html',
@@ -28,24 +28,27 @@ export class ComposeMailComponent {
   private typeCompteUser: any;
   private  receivers: Array<string> = [ 'Manager'] ;
 
+  MailClicked: Message;
+
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private messageService: MessageService,
+    private data2: DataService,
     private authentificationService: AuthentificationService) {
     this.typeCompteUser = this.authentificationService.getTypeCompteUser();
 
     switch (this.typeCompteUser) {
       case 'Helpdesk': case 'Administrateur':    {
-        this.receivers[0] = 'Manager';
-        this.receivers[1] = 'Collaborateur';
+        this.receivers[0] = 'Manager Réseaux';
+        this.receivers[1] = 'Manager Base de données';
+        this.receivers[2] = 'Manager Système';
         break;
       }
       // tslint:disable-next-line:no-switch-case-fall-through
       case 'Technicien' :  {
         this.receivers[0] = 'Manager';
-        this.receivers[1] = 'Helpdesk';
         break;
       }
       // tslint:disable-next-line:no-switch-case-fall-through
@@ -54,10 +57,19 @@ export class ComposeMailComponent {
         this.receivers[1] = 'Technicien';
         break;
       }
+      case 'Collaborateur' : {
+        this.receivers[0] = 'Helpdesk';
+        break;
+      }
     }
     this.message = new Message();
     this.connectedUser = this.authentificationService.getUser();
   }
+
+  ngOnInit() {
+    this.MailClicked = this.data2.getClickedMail();
+  }
+
   onSubmit(m: NgForm) {
     if ( m.untouched || m.invalid) {
       alert('Remplir les champs obligatoires');

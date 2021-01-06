@@ -1,4 +1,4 @@
-<div class="card " *ngIf="MailClicked">
+<div class="card ">
     <div class="card-header">
       <div class="container">
         <div class="row">
@@ -21,7 +21,7 @@
     <div class="card-body" *ngFor="let response of MailClicked.responses">
       <p class="card-text badge">{{ response}}</p>
     </div>
-  <div class=" card-body " [hidden]="show">
+  <div class="card-body" [hidden]="show">
     <form (ngSubmit)="onSubmit(message)"  #message="ngForm">
       <div class="form-group">
         <label for="description">Repondre</label>
@@ -48,9 +48,6 @@
         <button *ngIf="isTech" routerLink="/AjoutIncident"  class="btn btn-primary"> Créer incident</button>
       </div>
     <div *ngSwitchDefault  class="right">
-      <a routerLink="/compose-mail"  class="btn btn-primary">Transférer </a>
+      <a (click)="goToMail($event)"  class="btn btn-primary">Transférer </a>
     </div>
   </div>
-
-</div>
-

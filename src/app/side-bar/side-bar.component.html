@@ -12,15 +12,15 @@
   <h1 class="nav-tabs">Boite Mail</h1>
   <!-- Nav Item - Test -->
   <li class="list-inline-item "  >
-    <a routerLink="/compose-mail" class="btn btn-danger nav-tabs"><i class="fa fa-plus-circle" aria-hidden="true"></i><span>Compose</span></a>
+    <a routerLink="/compose-mail" class="btn btn-danger nav-tabs"><i class="fa fa-plus-circle" aria-hidden="true"></i><span>Nouveau Message</span></a>
   </li>
   <li class="nav-item">
     <a  (click)="changeLocation('receive')" class="nav-link " ><i class="fas fa-envelope fa-fw" aria-hidden="true"></i>
       <span class="badge badge-danger badge-counter">7</span>
-      <span>Inbox</span></a>
+      <span>Boite de récéption</span></a>
   </li>
   <li class="nav-item">
-    <a (click)="changeLocation('sent')" class="nav-link"><i class="fa fa-paper-plane" aria-hidden="true"></i><span>Sent</span></a>
+    <a (click)="changeLocation('sent')" class="nav-link"><i class="fa fa-paper-plane" aria-hidden="true"></i><span>Message Envoyé</span></a>
   </li>
   <ng-container *ngIf="isAdmin ;then contenuForAdmin else contentForNoAdmin "> partie Admin ou bien le technicien</ng-container>
   <ng-template #contenuForAdmin>
@@ -54,11 +54,21 @@
     </ng-template>
     <ng-template #noTechNoAdmin>
     <!-- part of amal and fairouz-->
-      <a routerLink="/manager" class="nav-link">manager</a>
+
     </ng-template>
   </ng-template>
 
 
+   <!-- Footer -->
+
+
+  <li class="list-inline-item "  >
+    <a (click)="reloadPage()"  class="btn btn-danger nav-tabs logout"><i class="fa fa-sign-out-alt" aria-hidden="true"></i><span>Déconnexion</span></a>
+  </li>
+  <!-- End of Footer -->
+
+
 
 </ul>
+</div>
 <!-- End of Sidebar -->

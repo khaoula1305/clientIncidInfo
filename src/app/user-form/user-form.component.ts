@@ -33,9 +33,22 @@ export class UserFormComponent {
 
   //Type de compte:
   typeComptes: any = ['Administrateur' , 'Collaborateur' , 'Helpdesk', 'Manager' , 'Technicien']
+  divisions: any = ['Réseau', 'Système','Base de donnée']
+
+  changeTypeCompte(e) {
+    console.log(e.target.value);
+    this.user.typeCompte=e.target.value;
+  }
+  changeDivision(e) {
+    console.log(e.target.value);
+    this.user.division=e.target.value;
+  }
+
+  selected = 'option2';
   //typeCompteForm = this.fb.group({typeDeCompte: ['']})
   onClickTypeCompte(){
     this.user.typeCompte=this.typeComptes.value
     //alert(JSON.stringify(this.typeComptes.value))
   }
+
 }
