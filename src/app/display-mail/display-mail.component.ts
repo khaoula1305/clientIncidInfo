@@ -58,6 +58,10 @@ export class DisplayMailComponent implements OnInit {
       m.value.description = '';
       this.messageService.save(this.MailClicked).subscribe(result => this.router.navigate(['/display-mail']));
     }
+  }
 
+  goToMail(event) {
+    this.data2.changeClickedMail(this.MailClicked);
+    this.router.navigate(['/compose-mail']);
   }
 }

@@ -21,7 +21,10 @@ export class SideBarComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  reloadPage() {
+    window.location.reload();
+    console.log("reload");
+ }
   /*Deconnexion(){
     this.authentificationServide.logout();
     console.log("Deconnxion");

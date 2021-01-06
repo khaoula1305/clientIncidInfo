@@ -1,3 +1,4 @@
+<h1>Gestion des Utilisateurs</h1>
 <div class="card my-5">
   <div class="card-body">
     <table class="table table-bordered table-striped">
@@ -23,8 +24,8 @@
           <td>{{ user.typeCompte }}</td>
           <td>{{ user.division }}</td>
           <td>{{ user.fonction }}</td>
-          <td> <a routerLink="/messages" class="btn btn-danger">Modifier</a></td>
-          <td><a routerLink="/messages" class="btn btn-danger">Supprimer</a> </td>
+          <td> <a routerLink="/messages" class="btn btn-danger" (click)="updateUser(user.id)">Modifier</a></td>
+          <td><a  class="btn btn-danger" (click)="deleteUser(user.id)">Supprimer</a> </td>
         </tr>
       </tbody>
     </table>

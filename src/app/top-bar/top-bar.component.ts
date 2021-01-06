@@ -22,4 +22,8 @@ export class TopBarComponent implements OnInit {
   Chercher() {
   this.inc.chercher('serveur');
   }
+  reloadPage() {
+    window.location.reload();
+    console.log("reload");
+ }
 }

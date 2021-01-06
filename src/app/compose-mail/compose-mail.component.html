@@ -1,3 +1,4 @@
+<h1>Composer votre mail</h1>
 <div class="card my-5">
     <div class="card-body">
       <form (ngSubmit)="onSubmit(message)"  #message="ngForm">
@@ -11,7 +12,7 @@
                  ngModel
                  name="titre"
                  #titre="ngModel"
-                 placeholder="Entrer le titre de message "
+                 placeholder="{{ MailClicked.titre }}"
                >
         </div>
         <div [hidden]="!titre.pristine" class="alert alert-danger" *ngIf="titre.touched && titre.invalid">Titre est obligatoire</div>
@@ -23,7 +24,7 @@
                  class="form-control"
                  id="description"
                  name="description"
-                 placeholder="Votre description"
+                 placeholder="{{ MailClicked.responses.shift() }}"
                     ngModel
           required
           #description="ngModel"
@@ -39,7 +40,9 @@
                   size="1"
                   *ngIf="receivers" >
             <option value="">Envoyer à </option>
+
             <option *ngFor="let r of receivers"  [value]="r.valueOf()" >{{r.valueOf()}}</option>
+
             <div *ngIf="receiver.invalid" class="alert alert-danger">Description est obligatoire</div>
           </select>
         </div>

@@ -1,3 +1,5 @@
+<h1>Ajouter un utilisateur</h1>
+
 <div class="card my-5">
   <div class="card-body">
     <form (ngSubmit)="onSubmit()" #userForm="ngForm">
@@ -21,7 +23,7 @@
           name="email"
           placeholder="Enter your email address"
           required #email="ngModel">
-        <div [hidden]="!email.pristine" class="alert alert-danger">Email is required</div>
+          <div [hidden]="!email.pristine" class="alert alert-danger">Email is required</div>
       </div>
       <!-- Password Utilisateur -->
       <div class="form-group">
@@ -32,53 +34,24 @@
           name="password" 
           placeholder="Enter your password"
           required #password="ngModel">
-          <div [hidden]="!email.pristine" class="alert alert-danger">Email is required</div>
+
         </div>
       <!-- Type Compte -->
       <div class="form-group">
-        <label for="typeCompte">Type de Compte</label>
-        <input type="text" [(ngModel)]="user.typeCompte" 
-          class="form-control" 
-          id="typeCompte" 
-          name="typeCompte" 
-          placeholder="Enter your typeCompte"
-          required #typeCompte="ngModel">
-          <div [hidden]="!email.pristine" class="alert alert-danger">Email is required</div>
+        <select class="form-control" (change)="changeTypeCompte($event)" >
+          <option disabled>Type de compte</option>
+          <option *ngFor="let compte of typeComptes">{{ compte }}</option>
+        </select>
         </div>
 
-          <!-- <form #userForm="typeCompteForm" (ngClick)="onClickTypeCompte()">
-
-            <select formControlName="typeDeCompte">
-              <option disabled>Type de Compte</option>
-              <option>Administrateur</option>
-              <option>Collaborateur</option>
-              <option *ngFor="let compte of typeComptes">{{compte}}</option>
-            </select>
-          </form> -->
-
-          <div class="dropdown nav-tabs">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Type de compte
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-              <div *ngFor="let compte of typeComptes">
-                <li ><button class="dropdown-item" type="button" >{{ compte }}</button></li>
-              </div>
-            </div>
-          </div>
-
-          
       <!-- Division -->
       <div class="form-group">
-        <label for="division">Division</label>
-        <input type="text" [(ngModel)]="user.division" 
-          class="form-control" 
-          id="division" 
-          name="division" 
-          placeholder="Enter your division"
-          required #division="ngModel">
-          <div [hidden]="!email.pristine" class="alert alert-danger">Email is required</div>
+        <select class="form-control" (change)="changeDivision($event)" >
+          <option disabled>Division</option>
+          <option *ngFor="let division of divisions">{{ division }}</option>
+        </select>
         </div>
+
       <!-- Fonction -->
       <div class="form-group">
         <label for="fonction">Fonction</label>
@@ -88,7 +61,7 @@
           name="fonction" 
           placeholder="Enter your fonction"
           required #fonction="ngModel">
-          <div [hidden]="!email.pristine" class="alert alert-danger">Email is required</div>
+
         </div>
       <!-- Boutton pour ajouter un utilisateur -->
       <button type="submit" 
