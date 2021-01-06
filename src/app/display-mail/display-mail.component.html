@@ -1,4 +1,4 @@
-<div class="card ">
+<div class="card " *ngIf="MailClicked">
     <div class="card-header">
       <div class="container">
         <div class="row">
@@ -19,9 +19,9 @@
       </div>
     </div>
     <div class="card-body" *ngFor="let response of MailClicked.responses">
-      <p class="card-text">{{ response}}</p>
+      <p class="card-text badge">{{ response}}</p>
     </div>
-  <div class="card-body" [hidden]="show">
+  <div class=" card-body " [hidden]="show">
     <form (ngSubmit)="onSubmit(message)"  #message="ngForm">
       <div class="form-group">
         <label for="description">Repondre</label>
@@ -42,15 +42,15 @@
               class="btn btn-info">Envoyer</button>
     </form>
   </div>
-  <div class="card-footer text-muted  right">
+  <div class="card-footer text-muted  " [ngSwitch]="typeCompteUser">
     <a (click)="showResponse()" class="btn btn-primary">Répondre</a>
-  <ng-container *ngIf="isTech ; then contentForTech else contentForNoTech "> partie Admin ou bien le technicien</ng-container>
-  <ng-template #contentForTech >
-    <button routerLink="/AjoutIncident"  class="btn btn-primary"> Créer incident</button>
-  </ng-template>
-
-  <ng-template #contentForNoTech>
-    <a routerLink="/compose-mail"  class="btn btn-primary">Transférer </a>
-  </ng-template>
+      <div *ngSwitchCase="'Technicien'" class="right">
+        <button *ngIf="isTech" routerLink="/AjoutIncident"  class="btn btn-primary"> Créer incident</button>
+      </div>
+    <div *ngSwitchDefault  class="right">
+      <a routerLink="/compose-mail"  class="btn btn-primary">Transférer </a>
     </div>
   </div>
+
+</div>
+

@@ -15,10 +15,12 @@
     <a routerLink="/compose-mail" class="btn btn-danger nav-tabs"><i class="fa fa-plus-circle" aria-hidden="true"></i><span>Compose</span></a>
   </li>
   <li class="nav-item">
-    <a routerLink="/boite-mail" class="nav-link " ><i class="fas fa-envelope fa-fw" aria-hidden="true"></i><span class="badge badge-danger badge-counter">7</span><span>Inbox</span></a>
+    <a  (click)="changeLocation('receive')" class="nav-link " ><i class="fas fa-envelope fa-fw" aria-hidden="true"></i>
+      <span class="badge badge-danger badge-counter">7</span>
+      <span>Inbox</span></a>
   </li>
   <li class="nav-item">
-    <a routerLink="/test" class="nav-link"><i class="fa fa-paper-plane" aria-hidden="true"></i><span>Sent</span></a>
+    <a (click)="changeLocation('sent')" class="nav-link"><i class="fa fa-paper-plane" aria-hidden="true"></i><span>Sent</span></a>
   </li>
   <ng-container *ngIf="isAdmin ;then contenuForAdmin else contentForNoAdmin "> partie Admin ou bien le technicien</ng-container>
   <ng-template #contenuForAdmin>
@@ -49,30 +51,10 @@
         <a routerLink="/incidents" class="nav-link"><span style="color: #f3a199">Base de connaissances</span></a>
       </div>
       <hr class="sidebar-divider">
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        A supprimer man hna
-      </div>
-      <!-- Nav Item - Pages Collapse Incidents -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne"
-           aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>incidents</span>
-        </a>
-        <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" routerLink="/AjoutIncident">Ajouter </a>
-            <a class="collapse-item" routerLink="/incident-liste">Visualiser</a>
-          </div>
-        </div>
-      </li>
-      <li>
-        <a routerLink="/messages" class="nav-link"><span style="color: #f3a199">messages</span></a>
-      </li>
     </ng-template>
     <ng-template #noTechNoAdmin>
     <!-- part of amal and fairouz-->
+      <a routerLink="/manager" class="nav-link">manager</a>
     </ng-template>
   </ng-template>
 

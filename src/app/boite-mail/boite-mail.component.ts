@@ -1,15 +1,12 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import { from } from 'rxjs';
+import {from, Observable} from 'rxjs';
 import { Message } from '../model/message';
 import {MessageService} from '../service/message.service';
 import { DataService } from '../service/data.service';
 import {AuthentificationService} from '../service/authentification.service';
 import { User } from '../model/user';
-import {UserService} from '../service/user.service';
-import { stringify } from 'querystring';
-import { connected } from 'process';
 
 
 
@@ -19,36 +16,56 @@ import { connected } from 'process';
   styleUrls: ['./boite-mail.component.scss']
 })
 export class BoiteMailComponent implements OnInit {
-
-  messages: Message[];
-  MailClicked: Message;
+  messages: Observable<Message[]>;
   connectedUser: User;
-
+  typeMessages: string ;
+  send: string;
+  receive = true;
   constructor(private messageService: MessageService,
               private http: HttpClient,
               private router: Router,
               private data2: DataService,
+              private route: ActivatedRoute,
               private authentificationservice: AuthentificationService) {
     this.connectedUser = this.authentificationservice.getUser();
   }
 
   ngOnInit() {
+    this.typeMessages = this.route.snapshot.params['typeMessages'];
+    if ( this.typeMessages == 'sent') {
+      this.send = 'Envoyé à';
+      this.receive = false;
+    } else {
+      this.send = 'Envoyé par';
+      this.receive = true;
+    }
     // To fill table with messages
-    this.messageService.findAllMessages().subscribe(data => {
-      this.messages = data;
-    });
-    // Variable globale message clické
-    // this.data2.currentMessage.subscribe(mail => this.MailClicked = mail);
-
-    // Variable global user connected
-    // this.data3.currentUser.subscribe(user => this.connectedUser = user);
-
+    this.reloadData();
+    /* this.messageService.findAllMessages().subscribe(data => {
+      this.messages = data; */
+    }
+  reloadData() {
+  this.messages = this.messageService.findAllMessages();
+}
+  deleteMessage(id: number) {
+    this.messageService.delete(id)
+      .subscribe(
+        data => {
+          console.log(data);
+          this.reloadData();
+        },
+        error => console.log(error));
+  }
+  messageDetails(id: number) {
+    this.router.navigate(['display-mail', id]);
   }
 
-  goToMail(event, a: Message) {
-    this.data2.changeClickedMail(a);
-    // console.log("hna ai tkteb l msg avant " + this.data2.getClickedMail().id +" -- msg apres :"+ a.titre);
-    this.router.navigate(['/display-mail']);
+  func(sender: string, receiver: string) {
+    if (this.receive === false) {
+      return sender === this.connectedUser.nom;
+    } else {
+      return receiver === this.connectedUser.nom;
+    }
   }
 }
 

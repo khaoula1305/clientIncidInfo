@@ -18,9 +18,7 @@
             <div class="card shadow mb-4">
               <div class="card-body">
                 <div class="text-center">
-                  <h1>Gestion des incidents informatiques</h1>
-                  <app-login *ngIf="isAuth==false"></app-login>
-                  <button (click)="auth()" [disabled]="isAuth" routerLink="incidents" *ngIf="isAuth==false">Authentifier</button>
+                  <!--h1>Gestion des incidents informatiques</h1-->
                   <router-outlet></router-outlet>
                 </div>
               </div>

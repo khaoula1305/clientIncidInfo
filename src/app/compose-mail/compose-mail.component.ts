@@ -66,12 +66,12 @@ export class ComposeMailComponent {
       const data = date.getDay() + '/' + date.getMonth() + '/' + date.getFullYear() + ' ' + date.getUTCHours() + ':' + date.getUTCMinutes();
       this.message.date = data;
       this.message.sender = this.connectedUser.nom;
-      console.log( m.value);
       this.message.titre = m.value.titre;
-      console.log(this.message);
       this.message.responses.push(m.value.description);
-      console.log(this.message);
       this.message.receiver = m.value.receiver;
+      this.message.read = false;
+      this.message.traite = false;
+      this.message.next = 0;
       this.messageService.save(this.message).subscribe(result => this.gotoMessageList());
     }
 

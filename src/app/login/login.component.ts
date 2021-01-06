@@ -27,9 +27,9 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     if (this.loginservice.authenticate(this.mail, this.password)) {
       this.appcompoent.auth();
-      if (this.loginservice.getTypeCompteUser() == 'Technicien')
-        this.router.navigate(['/incidents']);
-      this.router.navigate(['/boite-mail']);
+      if (this.loginservice.getTypeCompteUser() === 'Technicien')
+      {this.router.navigate(['/incidents']);}
+      this.router.navigate(['/boite-mail', 'receive']);
       this.invalidLogin = false;
     } else {
       alert(' Email ou mot de passe incorrecte');

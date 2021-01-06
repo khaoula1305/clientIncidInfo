@@ -36,7 +36,8 @@ export class UsersComponent implements OnInit {
 
   }
 
-  goToMail(event,a : Message){
+  goToMail(event, a: Message) {
+    this.messageService.findById(a.id);
     this.data2.changeClickedMail(a);
     this.router.navigate(['/display-mail']);
   }

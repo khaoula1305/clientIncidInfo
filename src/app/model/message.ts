@@ -8,4 +8,5 @@ export class Message {
     read: boolean;
     division: string;
     date: string;
+    next: number;
 }

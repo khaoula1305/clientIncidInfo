@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthentificationService} from '../service/authentification.service';
+import {User} from '../model/user';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-side-bar',
@@ -9,7 +11,10 @@ import {AuthentificationService} from '../service/authentification.service';
 export class SideBarComponent implements OnInit {
   isTech = false;
   isAdmin = false ;
-  constructor( private authentificationService: AuthentificationService) {
+  messageNonLu: number;
+  constructor( private authentificationService: AuthentificationService,
+               private router: Router
+  ) {
     const typeCompteUser = this.authentificationService.getTypeCompteUser();
     // tslint:disable-next-line:triple-equals
     switch (typeCompteUser) {
@@ -20,8 +25,20 @@ export class SideBarComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
 
+    let currentUser: User;
+    currentUser = this.authentificationService.currentUser;
+
+  }
+  changeLocation(locationData) {
+
+    // save current route first
+    const currentRoute = this.router.url;
+    console.log('loca ', locationData);
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['boite-mail', locationData]); // navigate to same route
+    });
+  }
   /*Deconnexion(){
     this.authentificationServide.logout();
     console.log("Deconnxion");

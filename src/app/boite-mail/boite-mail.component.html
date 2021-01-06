@@ -4,25 +4,31 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Traité</th>
-        <th scope="col">Envoyé par</th>
+        <th scope="col">{{send}}</th>
         <th scope="col">Titre</th>
         <th scope="col">Description</th>
         <th scope="col">Date</th>
       </tr>
     </thead>
     <tbody *ngIf="messages" >
-      <tr *ngFor="let message of messages"  (click)="goToMail($event,message)" [ngClass]="{'read-oui': message.read == true, 'read-non': message.read == false}" >
-        <ng-container *ngIf="message.receiver==connectedUser.nom">
+      <tr *ngFor="let message of messages  | async"  (click)="  messageDetails(message.id)" [ngClass]="{'read-oui': message.read == true, 'read-non': message.read == false}" >
+        <ng-container *ngIf="func(message.sender,message.receiver)">
         <th  scope="row" >{{ message.id }}</th>
         <td > <span class="traite" [ngClass]="{
           'traite-oui' : message.traite == true,
           'traite-non' : message.traite == false
         }"
         > {{ message.traite }}</span></td>
-        <td> <span  class="sender">{{ message.sender }}</span></td>
+          <ng-container *ngIf="receive then rh else sn"></ng-container>
+          <ng-template #rh>
+            <td> <span  class="sender" >{{ message.sender }}</span></td>
+          </ng-template>
+          <ng-template #sn> <td> <span  class="sender" >{{ message.receiver }}</span></td></ng-template>
+
         <td> <span  class="titre">{{ message.titre }}</span></td>
         <td> <span  class=" text-muted description">{{ message.responses }}</span></td>
         <td> <span class="date">{{ message.date }}</span></td>
+          <td><button (click)="deleteMessage(message.id)" class="btn btn-danger">Delete</button></td>
         </ng-container>
       </tr>
     </tbody>

@@ -18,10 +18,10 @@ const routes: Routes = [
   { path: 'adduser', component: UserFormComponent },
     {path: 'test', component: UsersComponent},
   {path: 'AjoutIncident', component: IncidentFormComponent},
-  {path: 'boite-mail', component: BoiteMailComponent},
+  {path: 'boite-mail/:typeMessages', component: BoiteMailComponent},
   {path: 'incident-liste', component: IncidentListeComponent},
   {path: 'compose-mail', component: ComposeMailComponent},
-  {path: 'display-mail', component: DisplayMailComponent},
+  {path: 'display-mail/:id', component: DisplayMailComponent},
   {path: 'login', component: LoginComponent},
   {path: 'incidents', component: IncidentsComponent},
   {path: 'manager', component: ManagerComponent}
