@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-//import { Console } from 'console';
 import { User } from '../model/user';
 import {UserService} from '../service/user.service';
+import { DataService } from '../service/data.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-user-list',
@@ -11,7 +12,9 @@ import {UserService} from '../service/user.service';
 export class UserListComponent implements OnInit {
   users: User[];
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private data2: DataService,
+    private route: ActivatedRoute,
+    private router: Router,) {
   }
 
   ngOnInit() {
@@ -29,6 +32,12 @@ export class UserListComponent implements OnInit {
           this.reloadData();
         },
         error => console.log(error));
+  }
+
+  updateUser(event,user : User){
+    this.data2.changeClickedUser(user);
+    this.router.navigate(['/modify-user']);
+
   }
 
   reloadData() {

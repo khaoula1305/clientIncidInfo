@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { User } from '../model/user';
 import { Message } from '../model/message';
-import {MessageService} from '../service/message.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,10 +12,17 @@ export class DataService {
   private currentMessageSubject: BehaviorSubject<Message>;
   public currentMessage;
 
+  user: User;
+  private currentUserSubject: BehaviorSubject<User>;
+  public currentClickedUser;
+
   // Stocker message clické afin de l'ouvrir et fonction pour changer son num
   constructor() {
     this.currentMessageSubject = new BehaviorSubject<Message>(JSON.parse(localStorage.getItem('currentMessage')));
     this.currentMessage = this.currentMessageSubject.asObservable();
+
+    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentClickedUser')));
+    this.currentClickedUser = this.currentUserSubject.asObservable();
    }
 
   changeClickedMail(mail: Message) {
@@ -25,6 +32,13 @@ export class DataService {
   }
   getClickedMail() {
     return this.currentMessage;
+  }
+
+  changeClickedUser(user: User) {
+    this.currentClickedUser = user;
+  }
+  getClickedUser() {
+    return this.currentClickedUser;
   }
 
 }

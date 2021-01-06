@@ -23,10 +23,11 @@ export class UserService {
   public save(user: User) {
     return this.http.post<User>(this.usersUrl, user);
   }
+  
   deleteUser(id: number){
     return  this.http.delete(`${this.usersUrl}/${id}`);
   }
-  updateUser(id: number, value: any): Observable<Object> {
+  updateUser(id: bigint, value: any): Observable<Object> {
     return this.http.put(`${this.usersUrl}/${id}`, value);
   }
 
