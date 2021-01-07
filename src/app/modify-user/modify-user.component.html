@@ -1,0 +1,62 @@
+<h1>Modifier un utilisateur</h1>
+
+<div class="card my-5">
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+      <!-- Nom Utilisateur -->
+      <div class="form-group">
+        <label for="nom">nom</label>
+        <input type="text" [(ngModel)]="user.nom" value="{{user.nom}}" 
+          class="form-control" 
+          id="nom" 
+          name="nom">
+      </div>
+      <!-- Email Utilisateur -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" [(ngModel)]="user.email" value="{{user.email}}"
+          class="form-control"
+          id="email"
+          name="email">
+      </div>
+      <!-- Password Utilisateur -->
+      <div class="form-group">
+        <label for="password">password</label>
+        <input type="text" [(ngModel)]="user.password" value="{{user.password}}"
+          class="form-control" 
+          id="password" 
+          name="password">
+
+        </div>
+      <!-- Type Compte -->
+      <div class="form-group">
+        <select class="form-control" (change)="changeTypeCompte($event)" >
+          <option disabled>{{user.typeCompte}}</option>
+          <option *ngFor="let compte of typeComptes">{{ compte }}</option>
+        </select>
+        </div>
+
+      <!-- Division -->
+      <div class="form-group">
+        <select class="form-control" (change)="changeDivision($event)" >
+          <option disabled >{{user.division}}</option>
+          <option *ngFor="let division of divisions">{{ division }}</option>
+        </select>
+        </div>
+
+      <!-- Fonction -->
+      <div class="form-group">
+        <label for="fonction">Fonction</label>
+        <input type="text" [(ngModel)]="user.fonction"  value="{{user.fonction}}"
+          class="form-control" 
+          id="fonction" 
+          name="fonction" >
+        </div>
+
+      <!-- Boutton pour ajouter un utilisateur -->
+      <button type="submit" 
+      [disabled]="!userForm.form.valid" 
+        class="btn btn-info">Submit</button>
+    </form>
+  </div>
+</div>
