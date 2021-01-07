@@ -24,8 +24,8 @@
                  class="form-control"
                  id="description"
                  name="description"
-                 placeholder="{{ MailClicked.responses[ MailClicked.responses.length -1 ] }}"
-                    [(ngModel)]="MailClicked.responses[ MailClicked.responses.length -1 ]"
+                 placeholder="{{ MailClicked.response }}"
+                    [(ngModel)]="MailClicked.response"
           required
           #description="ngModel"
           ></textarea>
@@ -49,7 +49,7 @@
 
         </div>
         <div  [hidden]="ManTech" class="form-group">
-          <select required
+          <select
                   ngModel
                   name="technician"
                   #technician="ngModel"
@@ -62,8 +62,6 @@
             <div *ngIf="technician.invalid" class="alert alert-danger">Description est obligatoire</div>
           </select>
         </div>
-
-
 
         <button type="submit"
                 class="btn btn-info">Envoyer</button>

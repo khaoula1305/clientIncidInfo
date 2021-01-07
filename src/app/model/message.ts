@@ -3,10 +3,11 @@ export class Message {
     sender: string;
     receiver: string;
     titre: string;
-    responses: string[] = [''];
+    response: string;
     traite: boolean;
     read: boolean;
     division: string;
     date: string;
-    next: number;
+    parent: Message;
+    children: Array<Message> = new Array<Message>();
 }

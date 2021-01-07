@@ -19,6 +19,7 @@ export class DisplayMailComponent implements OnInit {
   isTech = false;
   show = true;
   typeCompteUser: string;
+  reponses: Array<string> = new Array<string>();
 
   constructor(private data2: DataService,
               private route: ActivatedRoute,
@@ -36,20 +37,28 @@ export class DisplayMailComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
     this.messageService.getMessage(this.id)
       .subscribe(data => {
+        console.log(' data ', data);
         this.MailClicked = data;
-        console.log(this.MailClicked);
+        this.Remplir(this.MailClicked);
         if ( this.MailClicked.sender != this.authentificationService.currentUser.nom && this.MailClicked.traite == false ) {
           this.isTech = true;
         }
         this.MailClicked.read = true;
         this.messageService.save( this.MailClicked).subscribe();
       }, error => console.log(error));
+  }
+  Remplir(message: Message) {
 
   }
-
+  showResponses(response: Message){
+    if (response.sender == this.MailClicked.sender) {
+      return 'badge-success';
+    } else {
+      return 'badge-danger';
+    }
+  }
   showResponse() {
     this.show = this.show === false;
-    console.log(this.MailClicked);
   }
 
   onSubmit(m: NgForm) {
@@ -62,17 +71,19 @@ export class DisplayMailComponent implements OnInit {
       const date: Date = new Date();
       const data = date.getDay() + '/' + date.getMonth() + '/' + date.getFullYear() + ' ' + date.getUTCHours() + ':' + date.getUTCMinutes();
       this.message.date = data;
-      this.message.sender = this.authentificationService.currentUser.name;
+      this.message.sender = this.authentificationService.currentUser.nom;
       this.message.titre = this.MailClicked.titre;
-      this.message.responses.push(m.value.description);
+      this.message.response = m.value.description;
       this.message.receiver = this.MailClicked.sender;
       this.message.read = false;
       this.message.traite = false;
-      this.MailClicked.next = this.message.id;
-      this.message.next = 0;
       m.value.description = '';
-      console.log(this.message);
-      this.messageService.save(this.message).subscribe(result => this.router.navigate(['/display-mail', this.id]));
+     // console.log(this.message);
+      this.messageService.save(this.message).subscribe(result => {
+        this.messageService.setParent(result, this.MailClicked);
+     // this.MailClicked.child.push(result);
+     // this.messageService.save( this.MailClicked).subscribe();
+      this.router.navigate(['/display-mail', this.id])});
     }
   }
 

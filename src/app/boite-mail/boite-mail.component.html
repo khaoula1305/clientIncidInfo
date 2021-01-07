@@ -26,7 +26,7 @@
           <ng-template #sn> <td> <span  class="sender" >{{ message.receiver }}</span></td></ng-template>
 
         <td> <span  class="titre">{{ message.titre }}</span></td>
-        <td> <span  class=" text-muted description">{{ message.responses }}</span></td>
+        <td> <span  class=" text-muted description">{{ message.response}}</span></td>
         <td> <span class="date">{{ message.date }}</span></td>
           <td><button (click)="deleteMessage(message.id)" class="btn btn-danger">Delete</button></td>
         </ng-container>

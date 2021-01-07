@@ -19,8 +19,14 @@ export class MessageService {
       return data._embedded.messages as Message[];
     }));
   }
+  findMesssage(id: number): Message {
+    let message: Message;
+    this.getMessage(id).subscribe((data: Message) => {
+      message = data;
+    }, error => console.log(error));
+    return message;
+  }
   getMessage(id: number): Observable<any> {
-    console.log('id', id);
     return this.http.get( this.MessagesUrl + '/' + id );
   }
   findById(id: number)  {
@@ -48,4 +54,7 @@ export class MessageService {
     return this.http.post<Message>(this.MessagesUrl, message);
   }
 
+  public setParent(result: Message, MailClicked: Message) {
+    return this.http.put(this.MessagesUrl + '/' + MailClicked.id + '/parent', result );
+  }
 }

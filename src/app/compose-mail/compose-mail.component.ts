@@ -89,7 +89,7 @@ export class ComposeMailComponent {
       this.message.date = data;
       this.message.sender = this.connectedUser.nom;
       this.message.titre = m.value.titre;
-      this.message.responses.push(m.value.description);
+      this.message.response = m.value.description;
       if (!this.ManTech) {
         this.message.receiver = m.value.technician;
       } else {
@@ -97,7 +97,6 @@ export class ComposeMailComponent {
       }
       this.message.read = false;
       this.message.traite = false;
-      this.message.next = 0;
       this.messageService.save(this.message).subscribe(result => this.gotoMessageList());
     }
   }

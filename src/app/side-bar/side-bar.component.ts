@@ -34,14 +34,12 @@ export class SideBarComponent implements OnInit {
 
     // save current route first
     const currentRoute = this.router.url;
-    console.log('loca ', locationData);
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
       this.router.navigate(['boite-mail', locationData]); // navigate to same route
     });
   }
   reloadPage() {
     window.location.reload();
-    console.log("reload");
  }
   /*Deconnexion(){
     this.authentificationServide.logout();
