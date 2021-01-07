@@ -20,8 +20,6 @@ import { LoginComponent } from './login/login.component';
 import {IncidentService} from './service/incident.service';
 import {KnowledgeBaseModule} from './knowledge-base/knowledge-base.module';
 import { ManagerComponent } from './manager/manager.component';
-import { ModifyUserComponent } from './modify-user/modify-user.component';
-
 
 @NgModule({
   declarations: [
@@ -38,7 +36,6 @@ import { ModifyUserComponent } from './modify-user/modify-user.component';
     DisplayMailComponent,
     LoginComponent,
     ManagerComponent,
-    ModifyUserComponent
   ],
   imports: [
     BrowserModule,

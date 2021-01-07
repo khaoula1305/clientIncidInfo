@@ -12,7 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { GmailInboxComponent } from './PageCollaborateur/gmail-inbox/gmail-inbox.component';
 import {IncidentsComponent} from './knowledge-base/incidents/incidents.component';
 import {ManagerComponent} from './manager/manager.component';
-import { ModifyUserComponent } from './modify-user/modify-user.component';
+
 
 const routes: Routes = [
     { path: 'users', component: UserListComponent },
@@ -21,12 +21,11 @@ const routes: Routes = [
   {path: 'AjoutIncident', component: IncidentFormComponent},
   {path: 'boite-mail/:typeMessages', component: BoiteMailComponent},
   {path: 'incident-liste', component: IncidentListeComponent},
-  {path: 'compose-mail', component: ComposeMailComponent},
+  {path: 'compose-mail/:id', component: ComposeMailComponent},
   {path: 'display-mail/:id', component: DisplayMailComponent},
   {path: 'login', component: LoginComponent},
   {path: 'incidents', component: IncidentsComponent},
-  {path: 'manager', component: ManagerComponent},
-  {path: 'modify-user', component: ModifyUserComponent}
+  {path: 'manager', component: ManagerComponent}
 ];
 
 @NgModule({
