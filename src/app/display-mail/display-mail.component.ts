@@ -13,55 +13,71 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class DisplayMailComponent implements OnInit {
 
-  MailClicked: Message;
+  MailClicked: Message = new Message();
+  id: number;
+  message: Message;
   isTech = false;
-  isAdmin = false ;
   show = true;
+  typeCompteUser: string;
+
   constructor(private data2: DataService,
               private route: ActivatedRoute,
               private router: Router,
               private messageService: MessageService,
               private  authentificationService: AuthentificationService) {
-    const typeCompteUser = this.authentificationService.getTypeCompteUser();
-    // tslint:disable-next-line:triple-equals
-    switch (typeCompteUser) {
-      case 'Administrateur': case 'Helpdesk': {
-        this.isAdmin = true;
-        break;
-      }
-      case 'Technicien': {
-        // tslint:disable-next-line:triple-equals
-        // if ( this.MailClicked.sender != this.authentificationService.currentUser.nom && this.MailClicked.traite == false ) {
-        this.isTech = true;
-        // }
-        break;
-      }
-    }
+    this.typeCompteUser = this.authentificationService.getTypeCompteUser();
+
+
   }
 
+
   ngOnInit() {
-    this.MailClicked = this.data2.getClickedMail();
+    this.message = new Message();
+    this.id = this.route.snapshot.params['id'];
+    this.messageService.getMessage(this.id)
+      .subscribe(data => {
+        this.MailClicked = data;
+        console.log(this.MailClicked);
+        if ( this.MailClicked.sender != this.authentificationService.currentUser.nom && this.MailClicked.traite == false ) {
+          this.isTech = true;
+        }
+        this.MailClicked.read = true;
+        this.messageService.save( this.MailClicked).subscribe();
+      }, error => console.log(error));
+
   }
 
   showResponse() {
     this.show = this.show === false;
+    console.log(this.MailClicked);
   }
 
   onSubmit(m: NgForm) {
     if ( m.untouched || m.invalid) {
       alert('Remplir les champs obligatoires');
     } else {
+      this.show = true;
+        // this.MailClicked.responses.push(m.value.description);
+      // new message
       const date: Date = new Date();
       const data = date.getDay() + '/' + date.getMonth() + '/' + date.getFullYear() + ' ' + date.getUTCHours() + ':' + date.getUTCMinutes();
-      this.MailClicked.responses.push(m.value.description);
-      this.show = true;
+      this.message.date = data;
+      this.message.sender = this.authentificationService.currentUser.name;
+      this.message.titre = this.MailClicked.titre;
+      this.message.responses.push(m.value.description);
+      this.message.receiver = this.MailClicked.sender;
+      this.message.read = false;
+      this.message.traite = false;
+      this.MailClicked.next = this.message.id;
+      this.message.next = 0;
       m.value.description = '';
-      this.messageService.save(this.MailClicked).subscribe(result => this.router.navigate(['/display-mail']));
+      console.log(this.message);
+      this.messageService.save(this.message).subscribe(result => this.router.navigate(['/display-mail', this.id]));
     }
   }
 
   goToMail(event) {
-    this.data2.changeClickedMail(this.MailClicked);
-    this.router.navigate(['/compose-mail']);
+    // this.data2.changeClickedMail(this.MailClicked);
+    this.router.navigate(['compose-mail', this.id]);
   }
 }

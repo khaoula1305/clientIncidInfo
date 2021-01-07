@@ -38,7 +38,7 @@
           name="solution"
           placeholder="Votre solution"
           required #solution="ngModel"></textarea>
-        <div  class="alert alert-danger" *ngIf="solution.untouched && solution.invalid">Solution est obligatoire</div>
+        <div  class="alert alert-danger" *ngIf="solution.touched && solution.invalid">Solution est obligatoire</div>
       </div>
       <button type="submit" [disabled]="!incidentForm.form.valid"
               class="btn btn-info">Ajouter Solution</button>

@@ -9,7 +9,7 @@
                  id="titre"
                  required
                  maxlength="50"
-                 ngModel
+                 [(ngModel)]="MailClicked.titre"
                  name="titre"
                  #titre="ngModel"
                  placeholder="{{ MailClicked.titre }}"
@@ -24,28 +24,45 @@
                  class="form-control"
                  id="description"
                  name="description"
-                 placeholder="{{ MailClicked.responses.pop() }}"
-                    ngModel
+                 placeholder="{{ MailClicked.responses[ MailClicked.responses.length -1 ] }}"
+                    [(ngModel)]="MailClicked.responses[ MailClicked.responses.length -1 ]"
           required
           #description="ngModel"
           ></textarea>
           <div *ngIf="description.touched && description.invalid" class="alert alert-danger">Description est obligatoire</div>
         </div>
         <div  class="form-group">
-          <select required
-                  ngModel
-                  name="receiver"
-                  #receiver="ngModel"
+          <select
+            required
+            ngModel
+            name="receiver"
+            #receiver="ngModel"
                   class="form-control"
                   size="1"
-                  *ngIf="receivers" >
+                  *ngIf="receivers"
+          (ngModelChange)="ManagerTechnicien(receiver.value) ">
             <option value="">Envoyer à </option>
 
-            <option *ngFor="let r of receivers"  [value]="r.valueOf()" >{{r.valueOf()}}</option>
-
+            <option *ngFor="let r of receivers"  (selectionchange)="ManagerTechnicien(r.valueOf())" [value]="r.valueOf()" >{{r.valueOf()}}</option>
             <div *ngIf="receiver.invalid" class="alert alert-danger">Description est obligatoire</div>
           </select>
+
         </div>
+        <div  [hidden]="ManTech" class="form-group">
+          <select required
+                  ngModel
+                  name="technician"
+                  #technician="ngModel"
+                  class="form-control"
+                  size="1"
+                  *ngIf="users" >
+            <option value="">Envoyer à </option>
+            <option *ngFor="let user of users"  [value]="user.nom" >{{user.fonction }} : {{user.nom}} </option>
+
+            <div *ngIf="technician.invalid" class="alert alert-danger">Description est obligatoire</div>
+          </select>
+        </div>
+
 
 
         <button type="submit"
