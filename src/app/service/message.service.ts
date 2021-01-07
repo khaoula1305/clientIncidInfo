@@ -37,9 +37,8 @@ export class MessageService {
       }
     );
   }
-  update(id: number, value: any): Observable<Message> {
-    // @ts-ignore
-    return this.http.put(this.MessagesUrl + '/' + id, value);
+  update(id: number, value: Message) {
+    return this.http.put(this.MessagesUrl + '/' + id + '/read', value);
   }
 
   delete(id: number): Observable<any> {

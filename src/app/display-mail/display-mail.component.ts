@@ -13,7 +13,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class DisplayMailComponent implements OnInit {
 
-  MailClicked: Message;
+  MailClicked: Message = new Message();
   id: number;
   message: Message;
   isTech = false;
@@ -27,24 +27,29 @@ export class DisplayMailComponent implements OnInit {
               private  authentificationService: AuthentificationService) {
     this.typeCompteUser = this.authentificationService.getTypeCompteUser();
 
+
   }
+
 
   ngOnInit() {
     this.message = new Message();
     this.id = this.route.snapshot.params['id'];
     this.messageService.getMessage(this.id)
       .subscribe(data => {
-        console.log('data', data);
         this.MailClicked = data;
+        console.log(this.MailClicked);
+        if ( this.MailClicked.sender != this.authentificationService.currentUser.nom && this.MailClicked.traite == false ) {
+          this.isTech = true;
+        }
+        this.MailClicked.read = true;
+        this.messageService.save( this.MailClicked).subscribe();
       }, error => console.log(error));
-    if ( this.MailClicked.sender != this.authentificationService.currentUser.nom && this.MailClicked.traite == false ) {
-      this.isTech = true;
-    }
-    this.MailClicked.read = true;
+
   }
 
   showResponse() {
     this.show = this.show === false;
+    console.log(this.MailClicked);
   }
 
   onSubmit(m: NgForm) {
@@ -67,7 +72,7 @@ export class DisplayMailComponent implements OnInit {
       this.message.next = 0;
       m.value.description = '';
       console.log(this.message);
-      this.messageService.save(this.message).subscribe(result => this.router.navigate(['/display-mail']));
+      this.messageService.save(this.message).subscribe(result => this.router.navigate(['/display-mail', this.id]));
     }
   }
 
