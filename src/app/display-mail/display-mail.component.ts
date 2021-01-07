@@ -34,6 +34,7 @@ export class DisplayMailComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
     this.messageService.getMessage(this.id)
       .subscribe(data => {
+        console.log('data', data);
         this.MailClicked = data;
       }, error => console.log(error));
     if ( this.MailClicked.sender != this.authentificationService.currentUser.nom && this.MailClicked.traite == false ) {
@@ -71,7 +72,7 @@ export class DisplayMailComponent implements OnInit {
   }
 
   goToMail(event) {
-    this.data2.changeClickedMail(this.MailClicked);
-    this.router.navigate(['/compose-mail']);
+    // this.data2.changeClickedMail(this.MailClicked);
+    this.router.navigate(['compose-mail', this.id]);
   }
 }
