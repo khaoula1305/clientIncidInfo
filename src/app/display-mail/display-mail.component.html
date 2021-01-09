@@ -4,24 +4,26 @@
         <div class="row">
           <div class="col">
             <h2 class="card-title">{{ MailClicked.titre }}</h2>
-            <p>Envoyé par: {{ MailClicked.sender }}</p>
-            <p>à: {{ MailClicked.receiver }}</p>
+            <!--p>Envoyé par: {{ MailClicked.sender }}</p>
+            <p>à: {{ MailClicked.receiver }}</p-->
           </div>
           <div class="right col col-lg-3">
             <p class="date">{{ MailClicked.date }}</p>
             <ng-container *ngIf="MailClicked.traite then resolu else non"></ng-container>
             <ng-template #resolu> <p class="traite traite-oui"> Résolu</p></ng-template>
             <ng-template #non> <p class="traite traite-non"> non Résolu </p></ng-template>
-
           </div>
         </div>
       </div>
     </div>
-  <p class="card-text badge badge-success"> {{ MailClicked.response}} </p>
-    <div class="card-body" *ngFor="let res of reponses ">
-      <p class="card-text badge {{showResponses( res )}}" >
-        {{ res.response}}</p>
-    </div>
+  <div class="card-columns">
+    <div class="card-text badge badge-dark"> {{MailClicked.sender}}</div>
+    <p class="card-text badge badge-success"> {{ MailClicked.response}} </p>
+  </div>
+  <div class="card-columns" *ngFor="let res of reponses ">
+    <span class="badge badge-dark"> {{res.sender}} </span>
+      <p class="card-text  badge {{showResponses( res )}}" >{{ res.response}}</p>
+  </div>
   <div class="card-body" [hidden]="show">
     <form (ngSubmit)="onSubmit(message)"  #message="ngForm">
       <div class="form-group">
@@ -52,3 +54,4 @@
       <a (click)="goToMail($event)"  class="btn btn-primary">Transférer </a>
     </div>
   </div>
+</div>
