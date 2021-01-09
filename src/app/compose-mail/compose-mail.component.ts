@@ -68,7 +68,6 @@ export class ComposeMailComponent {
     //  this.MailClicked = this.data2.getClickedMail();
     this.id = this.route.snapshot.params['id'];
     if ( this.id ==  0) {
-      console.log('Zero',  this.id);
       this.MailClicked = new Message();
    } else {
      this.messageService.getMessage(this.id)
@@ -95,8 +94,11 @@ export class ComposeMailComponent {
       } else {
         this.message.receiver = m.value.receiver;
       }
+      // valeur par defaut
       this.message.read = false;
       this.message.traite = false;
+      this.message.next = 1;
+      this.message.previous = 1;
       this.messageService.save(this.message).subscribe(result => this.gotoMessageList());
     }
   }

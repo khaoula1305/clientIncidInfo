@@ -19,7 +19,8 @@ export class DisplayMailComponent implements OnInit {
   isTech = false;
   show = true;
   typeCompteUser: string;
-  reponses: Array<string> = new Array<string>();
+  reponses: Array<Message> = new Array<Message>();
+  lastMessage: Message;
 
   constructor(private data2: DataService,
               private route: ActivatedRoute,
@@ -37,20 +38,35 @@ export class DisplayMailComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
     this.messageService.getMessage(this.id)
       .subscribe(data => {
-        console.log(' data ', data);
         this.MailClicked = data;
-        this.Remplir(this.MailClicked);
-        if ( this.MailClicked.sender != this.authentificationService.currentUser.nom && this.MailClicked.traite == false ) {
-          this.isTech = true;
-        }
-        this.MailClicked.read = true;
-        this.messageService.save( this.MailClicked).subscribe();
-      }, error => console.log(error));
+      }, (error) => {
+          console.log(error);
+        },
+        () => {
+          this.Remplir(this.MailClicked);
+          if ( this.MailClicked.sender != this.authentificationService.currentUser.nom && this.MailClicked.traite == false ) {
+            this.isTech = true;
+          }
+          this.MailClicked.read = true;
+          this.messageService.save( this.MailClicked).subscribe();
+        });
   }
   Remplir(message: Message) {
-
+    this.lastMessage = message;
+    if (message.next > 1) {
+      this.messageService.getMessage(message.next)
+        .subscribe(data => {
+          message = data;
+        }, (error) => {
+            console.log(error);
+          },
+          () => {
+            this.reponses.push(message);
+            this.Remplir(message);
+          });
+    }
   }
-  showResponses(response: Message){
+  showResponses(response: Message) {
     if (response.sender == this.MailClicked.sender) {
       return 'badge-success';
     } else {
@@ -78,12 +94,16 @@ export class DisplayMailComponent implements OnInit {
       this.message.read = false;
       this.message.traite = false;
       m.value.description = '';
+      this.message.previous = this.lastMessage.id;
      // console.log(this.message);
       this.messageService.save(this.message).subscribe(result => {
-        this.messageService.setParent(result, this.MailClicked);
-     // this.MailClicked.child.push(result);
-     // this.messageService.save( this.MailClicked).subscribe();
-      this.router.navigate(['/display-mail', this.id])});
+      //  this.messageService.setParent(result, this.MailClicked);
+     //    this.MailClicked.child.push(result);
+        console.log(' result.id', result.id);
+        this.lastMessage.next = result.id;
+        // ici normalement update
+        this.messageService.save( this.lastMessage).subscribe();
+        this.router.navigate(['/display-mail', this.id])});
     }
   }
 

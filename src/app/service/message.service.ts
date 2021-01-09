@@ -19,7 +19,7 @@ export class MessageService {
       return data._embedded.messages as Message[];
     }));
   }
-  findMesssage(id: number): Message {
+  findMessage(id: number): Message {
     let message: Message;
     this.getMessage(id).subscribe((data: Message) => {
       message = data;
@@ -43,12 +43,13 @@ export class MessageService {
       }
     );
   }
+  // ce url ne fonctionne pas
   update(id: number, value: Message) {
-    return this.http.put(this.MessagesUrl + '/' + id + '/read', value);
+    return this.http.put(this.MessagesUrl + '/' + id, value);
   }
 
   delete(id: number): Observable<any> {
-    return this.http.delete(this.MessagesUrl + '/' + id, { responseType: 'text' });
+    return this.http.delete(this.MessagesUrl + '/' + id);
   }
   public save(message: Message) {
     return this.http.post<Message>(this.MessagesUrl, message);
@@ -56,5 +57,8 @@ export class MessageService {
 
   public setParent(result: Message, MailClicked: Message) {
     return this.http.put(this.MessagesUrl + '/' + MailClicked.id + '/parent', result );
+  }
+  public getChildren(id: number) {
+    return this.http.get(this.MessagesUrl + '/' + id + '/children');
   }
 }

@@ -8,6 +8,6 @@ export class Message {
     read: boolean;
     division: string;
     date: string;
-    parent: Message;
-    children: Array<Message> = new Array<Message>();
+   previous: number;
+   next: number;
 }

@@ -19,9 +19,9 @@
       </div>
     </div>
   <p class="card-text badge badge-success"> {{ MailClicked.response}} </p>
-    <div class="card-body" *ngFor="let response of MailClicked.children ">
-      <p class="card-text badge {{showResponses(response)}}" >
-        {{ MailClicked.response}}</p>
+    <div class="card-body" *ngFor="let res of reponses ">
+      <p class="card-text badge {{showResponses( res )}}" >
+        {{ res.response}}</p>
     </div>
   <div class="card-body" [hidden]="show">
     <form (ngSubmit)="onSubmit(message)"  #message="ngForm">
