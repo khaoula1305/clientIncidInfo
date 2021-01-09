@@ -14,11 +14,11 @@
       <tr *ngFor="let message of messages  | async"  (click)="  messageDetails(message.id)" [ngClass]="{'read-oui': message.read == true, 'read-non': message.read == false}" >
         <ng-container *ngIf="func(message.sender,message.receiver)">
         <th  scope="row" >{{ message.id }}</th>
-        <td > <span class="traite" [ngClass]="{
-          'traite-oui' : message.traite == true,
-          'traite-non' : message.traite == false
-        }"
-        > {{ message.traite }}</span></td>
+        <td>
+          <ng-container *ngIf="message.traite then resolu else non"></ng-container>
+          <ng-template #resolu> <span class="traite traite-oui"> Résolu</span></ng-template>
+          <ng-template #non> <span class="traite traite-non"> non Résolu </span></ng-template>
+        </td>
           <ng-container *ngIf="receive then rh else sn"></ng-container>
           <ng-template #rh>
             <td> <span  class="sender" >{{ message.sender }}</span></td>

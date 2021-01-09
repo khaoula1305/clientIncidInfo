@@ -22,7 +22,7 @@
           id="description"
           ngModel
           name="description"
-          [(ngModel)]="MailClicked.responses[0]"
+          [(ngModel)]="MailClicked.response"
           required #description="ngModel"
         ></textarea>
         <div  class="alert alert-danger" *ngIf=" description.invalid">Description est obligatoire</div>

@@ -9,11 +9,10 @@
           </div>
           <div class="right col col-lg-3">
             <p class="date">{{ MailClicked.date }}</p>
-            <p class="traite" [ngClass]="{
-                'traite-oui' : MailClicked.traite == true,
-                'traite-non' : MailClicked.traite == false
-            }"
-            > {{ MailClicked.traite }} </p>
+            <ng-container *ngIf="MailClicked.traite then resolu else non"></ng-container>
+            <ng-template #resolu> <p class="traite traite-oui"> Résolu</p></ng-template>
+            <ng-template #non> <p class="traite traite-non"> non Résolu </p></ng-template>
+
           </div>
         </div>
       </div>

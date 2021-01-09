@@ -41,6 +41,7 @@ export class IncidentFormComponent  implements OnInit {
     this.incident.titre = m.value.titre;
     this.incident.solution = m.value.solution;
     this.MailClicked.traite = true;
+    this.messageService.save( this.MailClicked).subscribe();
     this.incident.resolue = true;
     this.incidentService.save(this.incident).subscribe(result => this.gotoIncidentList());
 }

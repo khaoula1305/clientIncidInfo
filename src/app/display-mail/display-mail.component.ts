@@ -39,16 +39,19 @@ export class DisplayMailComponent implements OnInit {
     this.messageService.getMessage(this.id)
       .subscribe(data => {
         this.MailClicked = data;
+        this.data2.changeClickedMail(data);
       }, (error) => {
           console.log(error);
         },
         () => {
           this.Remplir(this.MailClicked);
-          if ( this.MailClicked.sender != this.authentificationService.currentUser.nom && this.MailClicked.traite == false ) {
-            this.isTech = true;
+          if ( this.MailClicked.sender != this.authentificationService.currentUser.nom) {
+            if ( this.MailClicked.traite == false ) {
+              this.isTech = true;
+            }
+            this.MailClicked.read = true;
+            this.messageService.save( this.MailClicked).subscribe();
           }
-          this.MailClicked.read = true;
-          this.messageService.save( this.MailClicked).subscribe();
         });
   }
   Remplir(message: Message) {
