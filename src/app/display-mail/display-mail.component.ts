@@ -71,9 +71,9 @@ export class DisplayMailComponent implements OnInit {
   }
   showResponses(response: Message) {
     if (response.sender == this.MailClicked.sender) {
-      return 'badge-success';
+      return 'badge-info';
     } else {
-      return 'badge-danger';
+      return 'badge-warning';
     }
   }
   showResponse() {
@@ -106,7 +106,8 @@ export class DisplayMailComponent implements OnInit {
         this.lastMessage.next = result.id;
         // ici normalement update
         this.messageService.save( this.lastMessage).subscribe();
-        this.router.navigate(['/display-mail', this.id])});
+        this.router.navigate(['/display-mail', this.id]);
+      });
     }
   }
 

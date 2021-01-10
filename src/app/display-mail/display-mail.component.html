@@ -1,11 +1,84 @@
-<div class="card ">
+<!-- Dropdown Card Example -->
+<div class="card shadow mb-4">
+  <!-- Card Header - Dropdown -->
+  <div
+    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+    <h6 class="m-0 font-weight-bold text-primary">{{MailClicked.titre}}</h6>
+    <div class="right col col-lg-3">
+      <ng-container *ngIf="MailClicked.traite then resolu else non"></ng-container>
+      <ng-template #resolu> <span class="badge badge-success"> Résolu</span></ng-template>
+      <ng-template #non> <span class="badge badge-danger"> non Résolu </span></ng-template>
+      <!--span class="badge badge-dark">{{MailClicked.division}}</span-->
+    </div>
+    <!-- drop down -->
+    <div class="dropdown no-arrow">
+      <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+           aria-labelledby="dropdownMenuLink">
+        <div class="dropdown-header">Dropdown Header:</div>
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">Something else here</a>
+      </div>
+    </div>
+  </div>
+  <!-- Card Body -->
+  <div class="card-body">
+    <h4 class="small font-weight-bold ">{{MailClicked.sender}} <span
+      class="float-right">{{ MailClicked.date }}</span></h4>
+    <p class="card-text badge badge-info"> {{ MailClicked.response}} </p>
+    <hr/>
+    <div  *ngFor="let res of reponses ">
+      <h4 class="small font-weight-bold ">{{res.sender}}<span
+        class="float-right">{{ res.date }}</span></h4>
+      <p class="card-text badge {{showResponses( res )}}"> {{ res.response}} </p>
+      <hr/>
+      </div>
+    </div>
+  <div class="card-body" [hidden]="show">
+    <form (ngSubmit)="onSubmit(message)"  #message="ngForm">
+      <div class="form-group">
+        <label for="description">Repondre</label>
+        <textarea
+          cols="20"
+          rows="6"
+          class="form-control"
+          id="description"
+          name="description"
+          placeholder="Votre response"
+          ngModel
+          required
+          #description="ngModel"
+        ></textarea>
+        <div *ngIf="description.touched && description.invalid" class="alert alert-danger">Description est obligatoire</div>
+      </div>
+      <button type="submit"
+              class="btn btn-info">Envoyer</button>
+    </form>
+  </div>
+  <div class="card-footer text-muted  " [ngSwitch]="typeCompteUser">
+    <a (click)="showResponse()" class="btn btn-primary">Répondre</a>
+    <div *ngSwitchCase="'Technicien'" class="right">
+      <button *ngIf="isTech" routerLink="/AjoutIncident"  class="btn btn-primary"> Créer incident</button>
+    </div>
+    <div *ngSwitchDefault  class="right">
+      <a (click)="goToMail($event)"  class="btn btn-primary">Transférer </a>
+    </div>
+  </div>
+</div>
+
+<!--div class="card ">
     <div class="card-header">
       <div class="container">
         <div class="row">
           <div class="col">
             <h2 class="card-title">{{ MailClicked.titre }}</h2>
-            <!--p>Envoyé par: {{ MailClicked.sender }}</p>
-            <p>à: {{ MailClicked.receiver }}</p-->
+            <--p>Envoyé par: {{ MailClicked.sender }}</p>
+            <p>à: {{ MailClicked.receiver }}</p>
           </div>
           <div class="right col col-lg-3">
             <p class="date">{{ MailClicked.date }}</p>
@@ -17,7 +90,7 @@
       </div>
     </div>
   <div class="card-columns">
-    <div class="card-text badge badge-dark"> {{MailClicked.sender}}</div>
+    <span class="badge badge-dark"> {{MailClicked.sender}}</span>
     <p class="card-text badge badge-success"> {{ MailClicked.response}} </p>
   </div>
   <div class="card-columns" *ngFor="let res of reponses ">
@@ -54,4 +127,4 @@
       <a (click)="goToMail($event)"  class="btn btn-primary">Transférer </a>
     </div>
   </div>
-</div>
+</div-->

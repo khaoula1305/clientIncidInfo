@@ -12,7 +12,7 @@
     </thead>
     <tbody *ngIf="messages" >
       <tr *ngFor="let message of messages  | async"  (click)="  messageDetails(message.id)" [ngClass]="{'read-oui': message.read == true, 'read-non': message.read == false}" >
-        <ng-container *ngIf="func(message.sender,message.receiver)">
+        <ng-container *ngIf="func(message.sender,message.receiver) && message.previous==1">
         <th  scope="row" >{{ message.id }}</th>
         <td>
           <ng-container *ngIf="message.traite then resolu else non"></ng-container>
