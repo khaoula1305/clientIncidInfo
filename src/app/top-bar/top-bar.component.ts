@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IncidentsComponent } from '../knowledge-base/incidents/incidents.component';
 import { User } from '../model/user';
-import {AuthentificationService} from "../service/authentification.service"
+import {AuthentificationService} from '../service/authentification.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -13,6 +13,7 @@ export class TopBarComponent implements OnInit {
 
   inc: IncidentsComponent ;
   currentUser: User;
+  searchText;
   constructor(private authentificationService: AuthentificationService,
               private router: Router) {
       this.currentUser = this.authentificationService.getUser();

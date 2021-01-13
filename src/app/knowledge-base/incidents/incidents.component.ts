@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {IncidentService} from '../../service/incident.service';
+import {Incident} from '../../model/incident';
 
 @Component({
   selector: 'app-incidents',
@@ -8,26 +9,15 @@ import {HttpClient} from '@angular/common/http';
 })
 export class IncidentsComponent implements OnInit {
 
-  public incidents;
+  incidents: Incident[];
+  searchText: string;
 
+  constructor(private incidentService: IncidentService) { }
 
-  constructor(private http: HttpClient) {
-  }
   ngOnInit() {
-    this.http.get('http://localhost:9090/incidents')
-      .subscribe(data => {
-        this.incidents = data;
-      }, err => {
-        console.log(err);
-      });
-  }
-  chercher(mot: any) {
-    this.http.get('http://localhost:9090/incidents/search/byDescription?motcle=' + mot)
-      .subscribe(data => {
-        this.incidents = data;
-      }, err => {
-        console.log(err);
-      });
+    this.incidentService.findAllIncidents().subscribe(data => {
+      this.incidents = data;
+    });
   }
 
 

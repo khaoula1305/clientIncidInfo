@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { User } from '../model/user';
 import {UserService} from '../service/user.service';
 import { DataService } from '../service/data.service';
@@ -11,10 +11,9 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class UserListComponent implements OnInit {
   users: User[];
-
-  constructor(private userService: UserService, private data2: DataService,
-    private route: ActivatedRoute,
-    private router: Router,) {
+  @Input()
+  searchText;
+  constructor(private userService: UserService, private data2: DataService, private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {

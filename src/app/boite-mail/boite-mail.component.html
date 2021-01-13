@@ -1,5 +1,14 @@
-
-  <table id="example" class="table table-hover">
+<div class="input-group">
+  <input type="text" class="form-control bg-light border-0 small" name="search"
+         [(ngModel)]="searchText" autocomplete="off" placeholder="Chercher..."
+         aria-label="Search" aria-describedby="basic-addon2">
+  <div class="input-group-append">
+    <button class="btn btn-primary" type="button">
+      <i class="fas fa-search fa-sm"></i>
+    </button>
+  </div>
+</div>
+  <table id="example" class="table table-hover my-3">
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -11,7 +20,7 @@
       </tr>
     </thead>
     <tbody *ngIf="messages" >
-      <tr *ngFor="let message of messages  | async"  (click)="  messageDetails(message.id)" [ngClass]="{'read-oui': message.read == true, 'read-non': message.read == false}" >
+      <tr *ngFor="let message of messages  | async | filter: searchText"  (click)="  messageDetails(message.id)" [ngClass]="{'read-oui': message.read == true, 'read-non': message.read == false}" >
         <ng-container *ngIf="func(message.sender,message.receiver) && message.previous==1">
         <th  scope="row" >{{ message.id }}</th>
         <td>

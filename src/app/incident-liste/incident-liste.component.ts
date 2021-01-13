@@ -10,6 +10,7 @@ import {IncidentService} from '../service/incident.service';
 export class IncidentListeComponent implements OnInit {
 
   incidents: Incident[];
+  searchText: string;
 
   constructor(private incidentService: IncidentService) { }
 

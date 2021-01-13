@@ -8,7 +8,6 @@ import { IncidentListeComponent } from './incident-liste/incident-liste.componen
 import { ComposeMailComponent } from './compose-mail/compose-mail.component';
 import { DisplayMailComponent } from './display-mail/display-mail.component';
 import { LoginComponent } from './login/login.component';
-import { GmailInboxComponent } from './PageCollaborateur/gmail-inbox/gmail-inbox.component';
 import {IncidentsComponent} from './knowledge-base/incidents/incidents.component';
 import {ManagerComponent} from './manager/manager.component';
 

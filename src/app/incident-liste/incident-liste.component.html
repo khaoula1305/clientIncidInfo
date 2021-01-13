@@ -14,7 +14,7 @@
           </tr>
         </thead>
         <tbody *ngIf="incidents">
-           <tr *ngFor="let incident of incidents">
+           <tr *ngFor="let incident of incidents | filter: searchText">
             <td>{{ incident.id }}</td>
             <td>{{ incident.titre }}</td>
             <td>{{ incident.description }}</td>

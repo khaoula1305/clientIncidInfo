@@ -1,6 +1,17 @@
+
 <h1>Les incidents informatiques</h1>
-<div class="row" >
-  <ng-container *ngFor="let incident of incidents._embedded.incidents">
+<div class="input-group">
+  <input type="text" class="form-control bg-light border-0 small" name="search"
+         [(ngModel)]="searchText" autocomplete="off" placeholder="Chercher..."
+         aria-label="Search" aria-describedby="basic-addon2">
+  <div class="input-group-append">
+    <button class="btn btn-primary" type="button">
+      <i class="fas fa-search fa-sm"></i>
+    </button>
+  </div>
+</div>
+<div class="row my-3" *ngIf="incidents">
+  <ng-container *ngFor="let incident of incidents | filter: searchText">
     <ng-container *ngIf="incident.resolue">
     <div class="col-lg-6 mb-4" >
         <div class="card shadow mb-4">

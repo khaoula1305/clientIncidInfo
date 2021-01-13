@@ -21,6 +21,7 @@ export class BoiteMailComponent implements OnInit {
   typeMessages: string ;
   send: string;
   receive = true;
+  searchText;
   constructor(private messageService: MessageService,
               private http: HttpClient,
               private router: Router,

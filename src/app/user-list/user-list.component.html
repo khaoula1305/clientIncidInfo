@@ -1,5 +1,15 @@
 <h1>Gestion des Utilisateurs</h1>
-<div class="card my-5">
+<div class="input-group">
+  <input type="text" class="form-control bg-light border-0 small" name="search"
+         [(ngModel)]="searchText" autocomplete="off" placeholder="Chercher..."
+         aria-label="Search" aria-describedby="basic-addon2">
+  <div class="input-group-append">
+    <button class="btn btn-primary" type="button">
+      <i class="fas fa-search fa-sm"></i>
+    </button>
+  </div>
+</div>
+<div class="card my-3">
   <div class="card-body">
     <table class="table table-bordered table-striped">
       <thead class="thead-dark">
@@ -16,7 +26,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of users">
+        <tr *ngFor="let user of users | filter:searchText">
           <td>{{ user.id }}</td>
           <td>{{ user.nom }}</td>
           <td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>

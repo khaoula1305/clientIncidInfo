@@ -2,14 +2,13 @@
 <app-login *ngIf="isAuth==false"></app-login>
 <div id="wrapper" *ngIf="isAuth">
   <!--Sidebar-->
-  <app-side-bar *ngIf="isTech"></app-side-bar>
-
+  <app-side-bar></app-side-bar>
   <!-- Content Wrapper -->
   <div id="content-wrapper" class="d-flex flex-column">
     <!-- Main Content -->
     <div id="content">
       <!-- Topbar -->
-      <app-top-bar *ngIf="isTech" ></app-top-bar>
+      <app-top-bar></app-top-bar>
       <!-- Begin Page Content -->
       <div class="container-fluid">
         <!-- Content Row -->
@@ -23,7 +22,6 @@
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>

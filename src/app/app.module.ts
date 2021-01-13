@@ -19,6 +19,7 @@ import { LoginComponent } from './login/login.component';
 import {IncidentService} from './service/incident.service';
 import {KnowledgeBaseModule} from './knowledge-base/knowledge-base.module';
 import { ManagerComponent } from './manager/manager.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ManagerComponent } from './manager/manager.component';
     HttpClientModule,
     FormsModule,
     FormsModule,
-    KnowledgeBaseModule
+    KnowledgeBaseModule,
+    Ng2SearchPipeModule
   ],
   providers: [UserService, IncidentService],
   bootstrap: [AppComponent]
